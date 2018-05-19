@@ -1,4 +1,6 @@
-{% extends 'bennuhp/common/base.html' %}
+{% extends 'bennuhp//common/base.html' %}
+{% load static %}
+
 
 {% block content %}
 	<div id="blue">
@@ -20,21 +22,21 @@
 			<br><br>
 			<div class="col-lg-4">
 				<a href="https://www.youtube.com/watch?v=cz1s7JiV8xk">
-				<img class="img-square" src="assets/img/whats-my-love.png" width="200" height="200" alt=""></a>
+				<img class="img-square" src="{% static 'bennuhp/img/whats-my-love.png' %}" width="200" height="200" alt=""></a>
 				<h4>What's my love?</h4>
 				<p>First Single</p>
 			</div><!-- col-lg-4 -->
 
 			<div class="col-lg-4">
 				<a href ="https://www.youtube.com/watch?v=JDX38GWBn8w">
-				<img class="img-square" src="assets/img/morning.png" width="200" height="200" alt=""></a>
+				<img class="img-square" src="{% static 'bennuhp/img/morning.png' %}" width="200" height="200" alt=""></a>
 				<h4>Morning/Bennu</h4>
 				<p>Second Single</p>
 			</div><!-- col-lg-4 -->
 
 			<div class="col-lg-4">
 				<a href ="https://www.youtube.com/watch?v=M0D1F4_QjFE">
-				<img class="img-square" src="assets/img/yesterday.png" width="200" height="200" alt=""></a>
+				<img class="img-square" src="{% static 'bennuhp/img/yesterday.png' %}" width="200" height="200" alt=""></a>
 				<h4>Yesterday</h4>
 				<p>Cover Track of The Beatles</p>
 			</div><!-- col-lg-4 -->
@@ -59,14 +61,14 @@
 			<br><br>
 			<div class="col-lg-4">
 				<a href="https://www.youtube.com/watch?v=D2rjg39aeps">
-				<img class="img-square" src="assets/img/20150708-live.png" width="200" height="200" alt=""></a>
+				<img class="img-square" src="{% static 'bennuhp/img/20150708-live.png' %}" width="200" height="200" alt=""></a>
 				<h4>07/08/2015 live@YotsuyaTenmado</h4>
 				<p>live movies at YotsuyaTenmado</p>
 			</div><!-- col-lg-4 -->
 
 			<div class="col-lg-4">
 				<a href="https://www.youtube.com/watch?v=Ut3IBvoGNyM">
-				<img class="img-square" src="assets/img/201511-live.png" width="200" height="200" alt=""></a>
+				<img class="img-square" src="{% static 'bennuhp/img/201511-live.png' %}" width="200" height="200" alt=""></a>
 				<h4>11/07/2015 live@GyoenROSSO</h4>
 				<p>live movies at GyoenROSSO</p>
 			</div><!-- col-lg-4 -->

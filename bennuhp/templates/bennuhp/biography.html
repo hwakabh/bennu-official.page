@@ -1,4 +1,5 @@
 {% extends 'bennuhp/common/base.html' %}
+{% load static %}
 
 {% block content %}
 	<div id="blue">
@@ -17,7 +18,7 @@
 		<div class="row centered">
 			<br>
             <br>
-            <img class="img-circle" src="assets/img/bio.jpg" width="200" height="200" alt="">
+            <img class="img-circle" src="{% static 'bennuhp/img/bio.jpg' %}" width="200" height="200" alt="">
 		</div><!-- row -->
 	</div><!-- container -->
 
