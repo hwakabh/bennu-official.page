@@ -7,9 +7,9 @@ from bennuhp.views import page_not_found
 
 urlpatterns = [
     url('^admin/', admin.site.urls),
-    url('^bennu/', include('bennuhp.urls')),
-    url(r'^', page_not_found),
+    url('', include('bennuhp.urls')),
+    # url(r'^', page_not_found),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
