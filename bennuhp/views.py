@@ -4,20 +4,20 @@ from bennuhp.models import BlogPost
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html', {})
+    return render(request, 'bennuhp/home.html', {})
 
 
 def biography(request):
-    return render(request, 'biography.html', {})
+    return render(request, 'bennuhp/biography.html', {})
 
 
 def discograpth(request):
-    return render(request, 'discography.html', {})
+    return render(request, 'bennuhp/discography.html', {})
 
 
 def lives(request):
-    return render(request, 'lives.html', {})
+    return render(request, 'bennuhp/lives.html', {})
 
 
 def page_not_found(request):
-    return render(request, 'page_not_found.html', {})
+    return render(request, 'bennuhp/common/page_not_found.html', {})
