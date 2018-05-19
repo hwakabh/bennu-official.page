@@ -2,7 +2,6 @@ from django.shortcuts import render
 from bennuhp.models import BlogPost
 
 
-# Create your views here.
 def home(request):
     return render(request, 'bennuhp/home.html', {})
 
