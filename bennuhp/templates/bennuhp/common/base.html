@@ -39,10 +39,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">HOME</a></li>
-                    <li><a href="biography.html">BIOGRAPHY</a></li>
-                    <li><a href="discography.html">DISCOGRAPHY</a></li>
-                    <li><a href="lives.html">LIVES</a></li>
+                    <li class="active"><a href="{% url 'hm' %}">HOME</a></li>
+                    <li><a href="{% url 'bio' %}">BIOGRAPHY</a></li>
+                    <li><a href="{% url 'dsk' %}">DISCOGRAPHY</a></li>
+                    <li><a href="{% url 'lv' %}">LIVES</a></li>
               </ul>
 
         </div> <!--/.nav-collapse -->

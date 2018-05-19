@@ -5,10 +5,10 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    url(r'^home/', views.home),
-    url(r'^biography/', views.biography),
-    url(r'^discography/', views.discograpth),
-    url(r'^lives/', views.lives),
+    url(r'^home/', views.home, name='hm'),
+    url(r'^biography/', views.biography, name='bio'),
+    url(r'^discography/', views.discograpth, name='dsk'),
+    url(r'^lives/', views.lives, name='lv'),
 ]
 
 if settings.DEBUG:
