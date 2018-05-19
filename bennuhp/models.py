@@ -9,7 +9,6 @@ class BlogPost(models.Model):
     create_date = models.DateTimeField(default=timezone.now)
     publish_date = models.DateTimeField(blank=True, null=True)
 
-
     def publish_post(self):
         self.publish_date = timezone.now()
         self.save()
