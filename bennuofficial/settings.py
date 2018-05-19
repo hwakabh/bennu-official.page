@@ -69,7 +69,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -107,8 +106,25 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-if 'gunicorn' in os.environ.get('SERVER_SOFTWARE', ''):
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# Only for Windows Environment
+# if 'gunicorn' in os.environ.get('SERVER_SOFTWARE', ''):
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
+
+# Settings for Application Deployment to Heroku
+import dj_database_url
+
+# Overwrite
+DATABASES['default'] = dj_database_url.config()
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = 'staticfiles'
+DEBUG = False
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Local settings
+try:
+    from .local_settings import *
+except ImportError:
+    pass
