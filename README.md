@@ -2,7 +2,6 @@
 
 - Official Homepage for Bennu
   - Running apps on Heroku Paas
-  - https://bennuofficial.herokuapp.com/home/
 
 ***
 
