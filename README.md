@@ -36,4 +36,4 @@
 
 ## License
 
-- TBA
+- This application is licensed by BSD License since basically using Django framework.
