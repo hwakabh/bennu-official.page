@@ -7,10 +7,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# For Production deployments, SECRET_KEY should be used as environmental variables
-from os import environ
-SECRET_KEY = environ['SECRET_KEY']
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -132,4 +128,4 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 try:
     from .local_settings import *
 except ImportError:
-    pass
+    SECRET_KEY = os.environ.get('SECRET_KEY')
