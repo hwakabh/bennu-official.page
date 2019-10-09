@@ -1,7 +1,6 @@
 # Bennu Official Homepage
 
 - Official Homepage for Bennu
-  - Running apps on Heroku Paas
 
 ***
 
@@ -10,7 +9,7 @@
 - Runtime and Component versions
   - Python : 3.6.4
   - Django : 2.2.6
-  - `pip` is used as package management: version 19.2.3
+  - `pip3` is used as package management: version 19.2.3
 
 ***
 
