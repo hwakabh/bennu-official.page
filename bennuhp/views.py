@@ -3,6 +3,8 @@ from bennuhp.models import BlogPost
 
 
 def home(request):
+    for r in request.GET:
+        print(r)
     return render(request, 'bennuhp/home.html', {})
 
 
