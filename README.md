@@ -1,6 +1,7 @@
 # Bennu Official Homepage
 
 - Official Homepage for Bennu
+  - Formerly: https://bennu-official-hp.herokuapp.com/home/
 
 ***
 
