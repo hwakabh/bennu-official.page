@@ -1,5 +1,5 @@
 ---
-name: generic_issue_template.md
+name: generic.md
 about: Generic Issue Template
 title: ''
 labels: ''
