@@ -1,6 +1,17 @@
+# Generic
 .vscode/*
+.DS_Store
+
+# Runtimes
 *.venv/*
 *.pyc
-.DS_Store
-db.sqlite3
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
 local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles
