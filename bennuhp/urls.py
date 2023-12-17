@@ -1,14 +1,14 @@
-from django.conf.urls import url
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
 
 urlpatterns = [
-    url(r'^home/', views.home, name='hm'),
-    url(r'^biography/', views.biography, name='bio'),
-    url(r'^discography/', views.discograpth, name='dsk'),
-    url(r'^lives/', views.lives, name='lv'),
+    path('home/', views.home, name='hm'),
+    path('biography/', views.biography, name='bio'),
+    path('discography/', views.discograpth, name='dsk'),
+    path('lives/', views.lives, name='lv'),
 ]
 
 if settings.DEBUG:
