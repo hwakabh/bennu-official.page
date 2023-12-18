@@ -38,7 +38,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'bennuofficial.urls'
+ROOT_URLCONF = 'bennu_official.urls'
 
 TEMPLATES = [
     {
@@ -56,7 +56,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bennuofficial.wsgi.application'
+WSGI_APPLICATION = 'bennu_official.wsgi.application'
 
 
 # Database
