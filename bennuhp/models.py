@@ -10,7 +10,7 @@ class Music(models.Model):
     descriptions = models.TextField(null=True)
     url = models.URLField()
 
-    def _str__(self):
+    def __str__(self):
         return self.title
 
 
@@ -22,7 +22,7 @@ class Movie(models.Model):
     descriptions = models.TextField(null=True)
     url = models.URLField()
 
-    def _str__(self):
+    def __str__(self):
         return self.title
 
 
