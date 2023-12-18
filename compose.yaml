@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  django:
+    image: ghcr.io/hwakabh/bennu-official/django:latest
+    # platform: linux/amd64
+    environment:
+      - MYSQL_HOSTNAME=mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=bennu
+      - SECRET_KEY=your_secret_key
+    container_name: django
+    restart: always
+    working_dir: /app
+    ports:
+      - 8000:8000
+    depends_on:
+      - mysql
+
+  mysql:
+    image: ghcr.io/hwakabh/bennu-official/mysql:latest
+    # platform: linux/amd64
+    environment:
+      - MYSQL_HOSTNAME=mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bennu
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    tty: true
