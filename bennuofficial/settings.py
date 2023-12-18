@@ -60,8 +60,6 @@ WSGI_APPLICATION = 'bennuofficial.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -106,19 +104,12 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# Only for Windows Environment
-# if 'gunicorn' in os.environ.get('SERVER_SOFTWARE', ''):
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Settings for Application Deployment to Heroku
-import dj_database_url
-
-# Overwrite
-DATABASES['default'] = dj_database_url.config()
+# # Overwrite
 ALLOWED_HOSTS = ['*']
 STATIC_ROOT = 'staticfiles'
 DEBUG = False
