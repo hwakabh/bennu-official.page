@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from bennuhp.models import BlogPost
 
 
 def home(request):

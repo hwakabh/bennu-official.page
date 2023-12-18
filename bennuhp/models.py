@@ -1,18 +1,30 @@
+import uuid
+
 from django.db import models
-from django.utils import timezone
 
 
-class BlogPost(models.Model):
+class Music(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=200)
-    content = models.TextField()
-    create_date = models.DateTimeField(default=timezone.now)
     publish_date = models.DateTimeField(blank=True, null=True)
+    descriptions = models.TextField(null=True)
+    url = models.URLField()
 
-    def publish_post(self):
-        self.publish_date = timezone.now()
-        self.save()
-
-    # Python Internal Method.
-    def _str__(self):
+    def __str__(self):
         return self.title
 
+
+class Movie(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=200)
+    date = models.DateTimeField()
+    venue = models.TextField()
+    descriptions = models.TextField(null=True)
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title
+
+
+class LiveSchedule(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
