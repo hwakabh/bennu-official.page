@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Music(models.Model):
-    uuid = models.UUIDField()
+    uuid = models.UUIDField(primary_key=True)
     title = models.CharField(max_length=200)
     publish_date = models.DateTimeField(blank=True, null=True)
     descriptions = models.TextField(null=True)
@@ -14,7 +14,7 @@ class Music(models.Model):
 
 
 class Movie(models.Model):
-    uuid = models.UUIDField()
+    uuid = models.UUIDField(primary_key=True)
     title = models.CharField(max_length=200)
     date = models.DateTimeField()
     venue = models.TextField()
@@ -26,4 +26,4 @@ class Movie(models.Model):
 
 
 class LiveSchedule(models.Model):
-    uuid = models.UUIDField()
+    uuid = models.UUIDField(primary_key=True)
