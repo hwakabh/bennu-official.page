@@ -60,6 +60,9 @@ WSGI_APPLICATION = 'bennu_official.wsgi.application'
 
 
 # Database
+import pymysql
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
