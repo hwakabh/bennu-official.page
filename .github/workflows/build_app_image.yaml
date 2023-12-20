@@ -1,0 +1,28 @@
+name: Build App Image
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_and_ship:
+    name: Build & Ship OCI image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # References:
+      # - https://github.com/mamezou-tech/buildpacks-action
+      # - https://github.com/marketplace/actions/buildpacks-action
+      - name: Invoke buildpacks-action
+        uses: mamezou-tech/buildpacks-action@master
+        with:
+          image: 'ghcr.io/hwakabh/bennu-official/django'
+          tag: 'latest'
+          builder: 'paketobuildpacks/builder-jammy-full'
+          # TODO: should be fetched from .python-version
+          env: 'BP_CPYTHON_VERSION=3.11.5'
+          publish: true
