@@ -14,6 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PUSH_PAT }}
+
       # References:
       # - https://github.com/mamezou-tech/buildpacks-action
       # - https://github.com/marketplace/actions/buildpacks-action
