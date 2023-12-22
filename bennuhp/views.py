@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
+from bennuhp.models.music import Music
+from bennuhp.models.movie import Movie
+from bennuhp.models.liveschedule import LiveSchedule
+
 
 def home(request):
     for r in request.GET:
@@ -12,11 +16,27 @@ def biography(request):
 
 
 def discograpth(request):
-    return render(request, 'bennuhp/discography.html', {})
+    musics = Music.objects.all()
+    movies = Movie.objects.all()
+    return render(
+        request,
+        'bennuhp/discography.html',
+        {
+            "musics": musics,
+            "movies": movies
+        }
+    )
 
 
 def lives(request):
-    return render(request, 'bennuhp/lives.html', {})
+    lives = LiveSchedule.objects.all()
+    return render(
+        request,
+        'bennuhp/lives.html',
+        {
+            "lives": lives
+        }
+    )
 
 
 def page_not_found(request):
