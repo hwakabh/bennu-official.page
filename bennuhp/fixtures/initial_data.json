@@ -6,7 +6,8 @@
       "title": "What's my love?",
       "publish_date": "2015-07-01 12:00:00",
       "descriptions": "First original single, Waltz with playing the piano",
-      "url": "https://soundcloud.com/bennu1011/whats-my-love-original"
+      "url": "https://soundcloud.com/bennu1011/whats-my-love-original",
+      "image_path": "bennuhp/img/whats-my-love.png"
     }
   },
   {
@@ -16,7 +17,8 @@
       "title": "Morning",
       "publish_date": "2016-07-18 12:00:00",
       "descriptions": "Second original single",
-      "url": "https://soundcloud.com/bennu1011/morning"
+      "url": "https://soundcloud.com/bennu1011/morning",
+      "image_path": "bennuhp/img/morning.png"
     }
   },
   {
@@ -25,8 +27,9 @@
     "fields": {
       "title": "Yesterday",
       "publish_date": "2016-08-01 12:00:00",
-      "descriptions": "Cover track of The Beatles, by playing the piano",
-      "url": "https://soundcloud.com/bennu1011/yesterday-the-beatles"
+      "descriptions": "Cover track of The Beatles, playing the piano",
+      "url": "https://soundcloud.com/bennu1011/yesterday-the-beatles",
+      "image_path": "bennuhp/img/yesterday.png"
     }
   },
   {
@@ -37,7 +40,8 @@
       "date": "2015-07-08 12:00:00",
       "venue": "Yotsuya Tenmado",
       "descriptions": "First live movies at Yotsuya Tenmado.",
-      "url": "https://www.youtube.com/watch?v=D2rjg39aeps"
+      "url": "https://www.youtube.com/watch?v=D2rjg39aeps",
+      "image_path": "bennuhp/img/20150708-live.png"
     }
   },
   {
@@ -48,7 +52,8 @@
       "date": "2016-07-11 12:00:00",
       "venue": "Gyoen ROSSO",
       "descriptions": "live movies at Gyoen ROSSO",
-      "url": "https://www.youtube.com/watch?v=Ut3IBvoGNyM"
+      "url": "https://www.youtube.com/watch?v=Ut3IBvoGNyM",
+      "image_path": "bennuhp/img/201511-live.png"
     }
   },
   {
