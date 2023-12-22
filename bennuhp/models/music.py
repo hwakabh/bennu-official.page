@@ -9,6 +9,7 @@ class Music(models.Model):
     publish_date = models.DateTimeField(blank=True, null=True)
     descriptions = models.TextField(null=True)
     url = models.URLField()
+    image_path = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title
