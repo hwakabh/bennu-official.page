@@ -2,8 +2,8 @@ name: Build App Image
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
   workflow_dispatch:
 
 jobs:
@@ -32,4 +32,5 @@ jobs:
           builder: 'paketobuildpacks/builder-jammy-full'
           # TODO: should be fetched from .python-version
           env: 'BP_CPYTHON_VERSION=3.11.5'
+          debug_mode: "true"
           publish: true
