@@ -19,18 +19,18 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PUSH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        # https://github.com/docker/login-action#github-container-registry
 
-      # References:
-      # - https://github.com/mamezou-tech/buildpacks-action
-      # - https://github.com/marketplace/actions/buildpacks-action
-      - name: Invoke buildpacks-action
-        uses: mamezou-tech/buildpacks-action@master
-        with:
-          image: 'ghcr.io/hwakabh/bennu-official/django'
-          tag: 'latest'
-          builder: 'paketobuildpacks/builder:full'
-          # buildpacks: 'paketo-buildpacks/python'
-          # TODO: should be fetched from .python-version
-          env: 'BP_CPYTHON_VERSION=3.11.5'
-          publish: true
+      - name: Install pack
+        uses: buildpacks/github-actions/setup-pack@v5.0.0
+        # https://github.com/buildpacks/github-actions#setup-pack-cli-action
+
+      - name: Publish packages
+        run: |
+          pack build ghcr.io/hwakabh/bennu-official:latest \
+            --builder paketobuildpacks/builder-jammy-full \
+            --buildpack paketo-buildpacks/python \
+            --path . \
+            --env "$(cat .python-version)" \
+            --publish
