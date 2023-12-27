@@ -29,7 +29,8 @@ jobs:
         with:
           image: 'ghcr.io/hwakabh/bennu-official/django'
           tag: 'latest'
-          builder: 'paketobuildpacks/builder-jammy-full'
+          builder: 'paketobuildpacks/builder:full'
+          # buildpacks: 'paketo-buildpacks/python'
           # TODO: should be fetched from .python-version
           env: 'BP_CPYTHON_VERSION=3.11.5'
           publish: true
