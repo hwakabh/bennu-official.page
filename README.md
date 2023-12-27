@@ -21,18 +21,28 @@ so it is recommended to install `pyenv` first with following [the docs](https://
 
 ## Running and debug locally
 
-- Install dependencies
-  - Setting up required packages with pip
-    - `pip install -r requirements.txt`
+### MySQL database
+TODO: TBA
 
-- Run Django applications locally
-  - Check Python & pip versions
-    - `Python -V` & `pip -V`
-      - This application would be run only under the environments described above
-  - Run with local web server
-    - `python manage.py runserver`
-      - The default ports for djang use is `TCP/8000`
-      - If you have already used TCP/8000, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
+### Django application
+Please note that the default ports for djang use is `TCP/8000`.
+If you have already used TCP/8000, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
+
+```bash
+# Install dependencies
+% pip install -r requirements.txt
+
+# Make migrations
+% python manage.py migrate
+
+# Add initial data to MySQL Container
+% python manage.py loaddata initial_data
+
+# Start application
+% python manage.py runserver
+# In case, when you need to emulate production on local, you should use gunicorn
+% gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
+```
 
 ***
 
