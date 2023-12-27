@@ -19,7 +19,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_SECRET }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # References:
       # - https://github.com/mamezou-tech/buildpacks-action
