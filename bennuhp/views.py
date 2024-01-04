@@ -39,5 +39,10 @@ def lives(request):
     )
 
 
-def page_not_found(request):
-    return render(request, 'bennuhp/common/page_not_found.html', {})
+def page_not_found(request, exception):
+    return render(
+        request,
+        'bennuhp/common/page_not_found.html',
+        {},
+        status=404
+    )
