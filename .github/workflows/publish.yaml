@@ -1,0 +1,36 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_and_ship:
+    name: Build & Ship OCI image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        # https://github.com/docker/login-action#github-container-registry
+
+      - name: Install pack
+        uses: buildpacks/github-actions/setup-pack@v5.0.0
+        # https://github.com/buildpacks/github-actions#setup-pack-cli-action
+
+      - name: Publish packages
+        run: |
+          pack build ghcr.io/hwakabh/bennu-official:latest \
+            --builder paketobuildpacks/builder-jammy-full \
+            --buildpack paketo-buildpacks/python \
+            --path . \
+            --env "$(cat .python-version)" \
+            --publish

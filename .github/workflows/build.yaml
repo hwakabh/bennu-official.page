@@ -1,14 +1,12 @@
-name: Build App Image
+name: Build
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  build_and_ship:
-    name: Build & Ship OCI image
+  build:
+    name: Build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,15 +20,21 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
         # https://github.com/docker/login-action#github-container-registry
 
+      # TODO: TBD
+      # - name: Unit Test with Django buildin
+      # - name: Security Test with Trivy
+
       - name: Install pack
         uses: buildpacks/github-actions/setup-pack@v5.0.0
         # https://github.com/buildpacks/github-actions#setup-pack-cli-action
 
-      - name: Publish packages
+      - name: Build image locally
         run: |
           pack build ghcr.io/hwakabh/bennu-official:latest \
             --builder paketobuildpacks/builder-jammy-full \
             --buildpack paketo-buildpacks/python \
             --path . \
             --env "$(cat .python-version)" \
-            --publish
+
+      # TODO: TBD
+      # - name: Sanity Check with /healthz served by gunicorn within container image
