@@ -50,4 +50,4 @@ spec:
     targetPort: 8000
   selector:
     app: bennu
-  type: LoadBalance
+  type: LoadBalancer
