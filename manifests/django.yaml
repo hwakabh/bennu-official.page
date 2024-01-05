@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bennu
+  name: django
+  namespace: bennuhp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bennu
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: bennu
+    spec:
+      containers:
+      # TODO: need to replace SHA instead of latest tag
+      - image: ghcr.io/hwakabh/bennu-official:latest
+        imagePullPolicy: Always
+        name: django
+        env:
+        - name: MYSQL_HOSTNAME
+          value: "mysql.bennuhp.svc.cluster.local"
+        # # TODO: To be implemented
+        # readinessProbe:
+        #   httpGet:
+        #     path: /api/v1/healthz
+        #     port: 80
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 60
+        #   successThreshold: 1
+        #   failureThreshold: 3
+        #   timeoutSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bennu
+  name: django
+  namespace: bennuhp
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: bennu
+  type: LoadBalance

@@ -1,3 +1,20 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: bennu
+  name: pvc-mysql-data
+  namespace: bennuhp
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: standard-rwo  # GKE option
+  volumeMode: Filesystem
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -30,22 +47,6 @@ spec:
         - name: mysql-data
           persistentVolumeClaim:
             claimName: pvc-mysql-data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  labels:
-    app: bennu
-  name: pvc-mysql-data
-  namespace: bennuhp
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: default
-  volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: Service
