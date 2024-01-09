@@ -38,11 +38,16 @@ spec:
         image: bitnami/mysql:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /bitnami/mysql/data
+        - mountPath: /opt/bitnami/mysql/data
           name: mysql-data
+        securityContext:
+          runAsUser: 1001
         ports:
         - name: mysql
           containerPort: 3306
+        envFrom:
+          - secretRef:
+              name: mysql-secret
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
