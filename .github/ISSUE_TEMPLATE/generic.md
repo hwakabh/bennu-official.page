@@ -3,7 +3,7 @@ name: generic.md
 about: Generic Issue Template
 title: ''
 labels: ''
-assignees: ''
+assignees: hwakabh
 
 ---
 
