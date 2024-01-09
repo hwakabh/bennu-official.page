@@ -1,0 +1,25 @@
+app:
+- changed-files:
+  - any-glob-to-any-file: ['bennuhp/**/*', 'bennu_official/**/*']
+
+deployment:
+- changed-files:
+  - any-glob-to-any-file: ['.github/**/*', 'manifests/**/*']
+
+dependencies:
+- changed-files:
+  - any-glob-to-any-file: ['requirements.txt', '.python-version']
+
+docs:
+- changed-files:
+  - any-glob-to-any-file: ['**/*.md']
+
+ui:
+- changed-files:
+  - any-glob-to-any-file: ['bennuhp/templates/**/*', 'static/**/*']
+
+bug:
+- head-branch: ['^fix/', '^hotfix/']
+
+release:
+- head-branch: ['^release-please*']

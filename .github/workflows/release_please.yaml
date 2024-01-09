@@ -16,6 +16,3 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         with:
           release-type: python
-          # https://github.com/google-github-actions/release-please-action/issues/396#issuecomment-1136479955
-          package-name: bennu-official
-          version-path: bennu_official/__init__.py
