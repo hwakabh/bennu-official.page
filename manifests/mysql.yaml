@@ -1,0 +1,68 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: bennu
+  name: pvc-mysql-data
+  namespace: bennuhp
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: standard-rwo  # GKE option
+  volumeMode: Filesystem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bennu
+  name: mysql
+  namespace: bennuhp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bennu
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: bennu
+    spec:
+      containers:
+      - name: mysql
+        image: bitnami/mysql:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /opt/bitnami/mysql/data
+          name: mysql-data
+        ports:
+        - name: mysql
+          containerPort: 3306
+        envFrom:
+          - secretRef:
+              name: mysql-secret
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: pvc-mysql-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: bennuhp
+  labels:
+    app: bennu
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: bennu
+  type: ClusterIP
