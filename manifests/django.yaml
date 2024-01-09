@@ -22,9 +22,9 @@ spec:
       - image: ghcr.io/hwakabh/bennu-official:latest
         imagePullPolicy: Always
         name: django
-        env:
-        - name: MYSQL_HOSTNAME
-          value: "mysql.bennuhp.svc.cluster.local"
+        envFrom:
+          - secretRef:
+              name: app-secret
         # # TODO: To be implemented
         # readinessProbe:
         #   httpGet:
