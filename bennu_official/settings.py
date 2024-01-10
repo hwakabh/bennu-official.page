@@ -105,7 +105,7 @@ STATICFILES_DIRS = (
 # - destination path of ./manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # - URL path of staticfiles, which is specified in templates
-STATIC_URL = '/assets/'
+STATIC_URL = '/workspace/assets/'
 
 
 # Overwrite for local environment
