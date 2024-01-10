@@ -1,19 +1,14 @@
 import os
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = False
+SECRET_KEY = get_random_secret_key()
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,7 +21,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -34,8 +28,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
 
 ROOT_URLCONF = 'bennu_official.urls'
 
@@ -56,21 +50,27 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'bennu_official.wsgi.application'
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ALLOWED_HOSTS = ['*']
 
 # Database
 import pymysql
 pymysql.install_as_MySQLdb()
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bennu',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '0.0.0.0',
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_HOSTNAME'),
         'PORT': '3306',
     }
+}
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 # Password validation
@@ -89,37 +89,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Asia/Tokyo'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_URL = '/static/'
+# - Path of Django will search staticfiles
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# - destination path of ./manage.py collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# - URL path of staticfiles, which is specified in templates
+STATIC_URL = '/assets/'
 
-# # Overwrite
-ALLOWED_HOSTS = ['*']
-STATIC_ROOT = 'staticfiles'
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Local settings
+# Overwrite for local environment
 try:
     from .local_settings import *
 except ImportError:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    pass

@@ -9,7 +9,6 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=root
       - MYSQL_DATABASE=bennu
-      - SECRET_KEY=your_secret_key
     container_name: django
     restart: always
     ports:
