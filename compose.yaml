@@ -1,14 +1,17 @@
 version: '3'
 
+x-environment: &mysql_environments
+  MYSQL_HOSTNAME: mysql
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: bennu
+
 services:
   django:
     image: ghcr.io/hwakabh/bennu-official:latest
     # platform: linux/amd64
     environment:
-      - MYSQL_HOSTNAME=mysql
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=bennu
+      <<: *mysql_environments
+      MYSQL_USER: root
     container_name: django
     restart: always
     ports:
@@ -20,9 +23,7 @@ services:
     image: bitnami/mysql:latest
     # platform: linux/amd64
     environment:
-      - MYSQL_HOSTNAME=mysql
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=bennu
+      <<: *mysql_environments
     container_name: mysql
     restart: always
     ports:
