@@ -26,10 +26,16 @@ spec:
         name: migrate
         command:
         - /cnb/process/migrate
+        envFrom:
+          - secretRef:
+              name: app-secret
       - image: ghcr.io/hwakabh/bennu-official:latest
         name: loaddata
         command:
         - /cnb/process/seeds
+        envFrom:
+          - secretRef:
+              name: app-secret
       containers:
       # TODO: need to replace SHA instead of latest tag
       - image: ghcr.io/hwakabh/bennu-official:latest
