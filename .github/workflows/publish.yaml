@@ -29,8 +29,7 @@ jobs:
       - name: Publish packages
         run: |
           pack build ghcr.io/hwakabh/bennu-official:latest \
-            --builder paketobuildpacks/builder-jammy-full \
-            --buildpack paketo-buildpacks/python \
+            --builder gcr.io/buildpacks/builder:latest \
             --path . \
             --env "$(cat .python-version)" \
             --publish
