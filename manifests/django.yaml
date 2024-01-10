@@ -17,6 +17,19 @@ spec:
       labels:
         app: bennu
     spec:
+      initContainers:
+      - image: ghcr.io/hwakabh/bennu-official:latest
+        name: collectstatic
+        command:
+        - /cnb/process/collect
+      - image: ghcr.io/hwakabh/bennu-official:latest
+        name: migrate
+        command:
+        - /cnb/process/migrate
+      - image: ghcr.io/hwakabh/bennu-official:latest
+        name: loaddata
+        command:
+        - /cnb/process/seeds
       containers:
       # TODO: need to replace SHA instead of latest tag
       - image: ghcr.io/hwakabh/bennu-official:latest
