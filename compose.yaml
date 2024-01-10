@@ -1,6 +1,5 @@
 version: '3'
 
-# extension fields requires v3.4 or later
 x-environment: &mysql_environments
   MYSQL_HOSTNAME: mysql
   MYSQL_ROOT_PASSWORD: root
