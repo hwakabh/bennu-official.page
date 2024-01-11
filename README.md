@@ -17,6 +17,10 @@
 Please setup the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development,
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
+## Application Diagram
+
+![app-digram](./app-diagram.drawio.svg)
+
 ***
 
 ## Running and debug locally
