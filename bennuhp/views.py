@@ -1,8 +1,20 @@
 from django.shortcuts import render
+from django.views import View
+from django.http import JsonResponse
 
 from bennuhp.models.music import Music
 from bennuhp.models.movie import Movie
 from bennuhp.models.liveschedule import LiveSchedule
+
+
+class HealthzView(View):
+    def get(self, request):
+        return JsonResponse(
+            data={
+                "status": "ok"
+            },
+            status=200
+        )
 
 
 def home(request):
