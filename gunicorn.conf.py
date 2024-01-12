@@ -1,5 +1,6 @@
 #
 # Gunicorn config file
+# ref: https://docs.gunicorn.org/en/stable/settings.html
 #
 wsgi_app = 'bennu_official.wsgi'
 
@@ -11,6 +12,9 @@ bind = '0.0.0.0:8000'
 
 # Worker Processes
 workers = 2
+threads = 8
+keepalive = 0
+timeout = 0
 
 # Daemon Mode: run process as foreground
 daemon = False
