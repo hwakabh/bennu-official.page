@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.0](https://github.com/hwakabh/bennu-official/compare/v0.1.1...v0.2.0) (2024-01-12)
+
+
+### Features
+
+* added /healthz with class-based view. ([228c80f](https://github.com/hwakabh/bennu-official/commit/228c80f419e6f3f1ec9bafe3a8949af00c37241a))
+* added readiness probes for healthz. ([b4b754a](https://github.com/hwakabh/bennu-official/commit/b4b754a482af1eae7d34d936b42236627aa59f31))
+
+
+### Performance Improvements
+
+* updated gunicorn config. ([d99451a](https://github.com/hwakabh/bennu-official/commit/d99451ada650e79e643fce8a59601f22afaf2945))
+
+
+### Reverts
+
+* removed draft drawio files. ([a7fd404](https://github.com/hwakabh/bennu-official/commit/a7fd4046a97c13d0abd20b4792358d4da165a2a5))
+
+
+### Documentation
+
+* added drawio as .svg and linked from README. ([6a133fd](https://github.com/hwakabh/bennu-official/commit/6a133fdfcfe2ae4422af84d2fcdb70b7725b28e0))
+
 ## [0.1.1](https://github.com/hwakabh/bennu-official/compare/v0.1.0...v0.1.1) (2024-01-10)
 
 
