@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>LINE56</b></a>
+                <a class="navbar-brand" href="{% url 'home' %}"><b>LINE56</b></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -53,24 +53,19 @@
     {% block content %}
     {% endblock %}
 
-    <!-- FOOTER -->
     <div id="f">
-        <div class="container">
-            <div class="row centered">
-
-                <!-- Links to SNS -->
-                <a href="https://twitter.com/bennu1011?lang=ja"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.facebook.com/bennu1011/"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.youtube.com/channel/UCT1Q_-6DSex_wmwrgM2P6Nw"><i class="fa fa-youtube"></i></a>
-
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- Footer -->
+      <div class="container">
+        <div class="row centered">
+          <!-- Links to SNS -->
+          <a href="https://twitter.com/bennu1011?lang=ja"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.facebook.com/bennu1011/"><i class="fa fa-facebook"></i></a>
+          <a href="https://www.youtube.com/channel/UCT1Q_-6DSex_wmwrgM2P6Nw"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScript (Placed at the end of the document so the pages load faster) -->
-    <!-- Load jQuery -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
     <script src="{% static 'bennuhp/js/bootstrap.min.js' %}"></script>
 
     </body>
