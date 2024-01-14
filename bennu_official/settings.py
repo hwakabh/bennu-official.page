@@ -104,7 +104,7 @@ STATICFILES_DIRS = (
 )
 # - destination path of ./manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-# - URL path of staticfiles, which is specified in templates
+# - URL path of staticfiles, which is specified at templates in Pod by buildpacks
 STATIC_URL = '/workspace/assets/'
 
 
