@@ -3,73 +3,72 @@
 
 
 {% block content %}
-	<div id="blue">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-8 col-lg-offset-2">
-				<h4>MUSICS</h4>
-				<p>
-				Singles, Albums, Covers, and Demos...<br>
-				also available at <a href="https://soundcloud.com/bennu1011"><b>SoundCloud</b></a>
-				</p>
-				</div>
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- blue wrap -->
+<div id="blue">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+      <h4>MUSICS</h4>
+      <p>
+      Singles, Albums, Covers, and Demos...<br>
+      also available at <a href="https://soundcloud.com/bennu1011"><b>SoundCloud</b></a>
+      </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-	<div class="container w">
-		<div class="row centered">
-			<br><br>
-      {% for music in musics %}
-			<div class="col-lg-4">
-				<a href="{{ music.url }}">
-				<img class="img-square" src="{% static music.image_path %}" width="200" height="200" alt=""></a>
-				<h4> {{ music.title }} </h4>
-				<p> {{ music.descriptions }} </p>
-			</div>
-      {% endfor %}
-    </div><!-- row -->
-		<br>
-	</div><!-- container -->
+<div class="container w text-center">
+  <div class="row">
+    <br><br>
+    {% for music in musics %}
+    <div class="col-lg-4">
+      <a href="{{ music.url }}">
+      <img class="img-square" src="{% static music.image_path %}" width="200" height="200" alt=""></a>
+      <h4> {{ music.title }} </h4>
+      <p> {{ music.descriptions }} </p>
+    </div>
+    {% endfor %}
+  </div>
+  <br>
+</div>
 
-	<div id="blue">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-8 col-lg-offset-2">
-				<h4>MOVIES</h4>
-				<p>Music clips, Live movies, Featured DVDs...</p>
-				</div>
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- blue wrap -->
+<div id="blue">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+      <h4>MOVIES</h4>
+      <p>Music clips, Live movies, Featured DVDs...</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-	<div class="container w">
-		<div class="row centered">
-			<br><br>
-      {% for movie in movies %}
-			<div class="col-lg-4">
-				<a href="{{ movie.url }}">
-				<img class="img-square" src="{% static movie.image_path %}" width="200" height="200" alt=""></a>
-        <h4>{{ movie.title }}</h4>
-				<p>
-          {{ movie.date }} <br>
-          {{ movie.venue }} <br>
-          {{ movie.descriptions }}</p>
-			</div>
-      {% endfor %}
-		</div><!-- row -->
-		<br>
-	</div><!-- container -->
+<div class="container w text-center">
+  <div class="row">
+    <br><br>
+    {% for movie in movies %}
+    <div class="col-lg-4">
+      <a href="{{ movie.url }}">
+      <img class="img-square" src="{% static movie.image_path %}" width="200" height="200" alt=""></a>
+      <h4>{{ movie.title }}</h4>
+      <p>
+        {{ movie.date }} <br>
+        {{ movie.venue }} <br>
+        {{ movie.descriptions }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <br>
+</div>
 
-	<div id="r">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-8 col-lg-offset-2">
-					<p>Newest contents will be avaiable soon...</p>
-				</div>
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- r wrap -->
-
+<div id="r">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <p>Newest contents will be avaiable soon...</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
