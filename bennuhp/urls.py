@@ -4,6 +4,10 @@ from django.conf.urls.static import static
 
 from . import views
 
+
+# Requires for tests
+app_name = 'bennuhp'
+
 urlpatterns = [
     path('healthz', views.HealthzView.as_view(), name='healthz'),
     path('home/', views.home, name='home'),
