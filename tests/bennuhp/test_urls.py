@@ -5,6 +5,16 @@ from bennuhp.views import *
 
 
 class TestUrls(TestCase):
+    # Initial setup for class instantiation
+    @classmethod
+    def setUpTestData(self):
+        pass
+
+    # Common setup logics for each test case here
+    def setUp(self):
+        pass
+
+
     def test_healthz_url(self):
         url = reverse('bennuhp:healthz')
         self.assertEqual(resolve(url).func.view_class, HealthzView)

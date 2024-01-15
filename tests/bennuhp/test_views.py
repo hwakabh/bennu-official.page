@@ -4,8 +4,13 @@ from bennuhp.views import *
 
 
 class TestsRoutesStatusCode(TestCase):
+    # Initial setup for class instantiation
+    @classmethod
+    def setUpTestData(self):
+        pass
+
+    # Common setup logics for each test case here
     def setUp(self):
-        # Common setup logics for each test case here
         pass
 
     def test_healthz_success(self):
