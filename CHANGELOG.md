@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.1](https://github.com/hwakabh/bennu-official/compare/v0.2.0...v0.2.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* added namespace by app_name in urls.py. ([83b3a0d](https://github.com/hwakabh/bennu-official/commit/83b3a0d1bbfcb95280794384529f13e561d84620))
+* **ui:** added jQuery snippets for make active list dynamic. ([3690a00](https://github.com/hwakabh/bennu-official/commit/3690a0079e7aab16d41386a18bc569503aaec168))
+* **urls:** fixed typo in function name. ([9d69a85](https://github.com/hwakabh/bennu-official/commit/9d69a8520ecb9f03e0b6fe491e492e28756660c1))
+
 ## [0.2.0](https://github.com/hwakabh/bennu-official/compare/v0.1.1...v0.2.0) (2024-01-12)
 
 
