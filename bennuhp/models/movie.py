@@ -4,9 +4,17 @@ from django.db import models
 
 
 class Movie(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    uuid = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+
     title = models.CharField(max_length=200)
-    date = models.DateTimeField()
+    date = models.DateField(
+        null=True,
+        blank=True,
+    )
     venue = models.TextField()
     descriptions = models.TextField(null=True)
     url = models.URLField()
