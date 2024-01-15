@@ -27,7 +27,7 @@ def biography(request):
     return render(request, 'bennuhp/biography.html', {})
 
 
-def discograpth(request):
+def discography(request):
     musics = Music.objects.all()
     movies = Movie.objects.all()
     return render(
