@@ -68,7 +68,8 @@
       "open_time": "19:00:00",
       "start_time": null,
       "price": null,
-      "with_actors": []
+      "with_actors": [],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
     }
   },
   {
@@ -77,13 +78,30 @@
     "fields": {
       "title": "2015-10-04@Takadanobaba",
       "descriptions": "",
-      "date": "2015-07-08",
+      "date": "2015-10-04",
       "venue": "Yotsuya Tenmado comfort",
       "url": "http://otonami.com/comfort/map/",
       "open_time": "19:00:00",
       "start_time": null,
       "price": null,
-      "with_actors": ["Silent Sprout", "安里麻紀", "山本さくら"]
+      "with_actors": ["Silent Sprout", "安里麻紀", "山本さくら"],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "1af1fbf9bfb84717bd528fc129f85dc6",
+    "fields": {
+      "title": "2016-01-26@Shinjuku",
+      "descriptions": "Live house presents event \"Story of 88 keys\"",
+      "date": "2016-01-26",
+      "venue": "Yotsuya Tenmado comfort",
+      "url": "http://otonami.com/comfort/map/",
+      "open_time": "18:30",
+      "start_time": "19:00",
+      "price": 2000,
+      "with_actors": ["安里麻紀", "本橋早織", "沙知子"],
+      "image_path": "bennuhp/img/lives-3.jpg"
     }
   },
   {
@@ -98,7 +116,8 @@
       "open_time": "19:00:00",
       "start_time": null,
       "price": null,
-      "with_actors": []
+      "with_actors": [],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
     }
   },
   {
@@ -113,7 +132,8 @@
       "open_time": "17:30:00",
       "start_time": null,
       "price": 2500,
-      "with_actors": []
+      "with_actors": [],
+      "image_path": "bennuhp/img/lives-2.jpg"
     }
   },
   {
@@ -128,7 +148,8 @@
       "open_time": "19:00:00",
       "start_time": null,
       "price": null,
-      "with_actors": []
+      "with_actors": [],
+      "image_path": "bennuhp/img/lives-1.jpg"
     }
   }
 ]

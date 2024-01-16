@@ -36,5 +36,12 @@ class LiveSchedule(models.Model):
         max_length=(21 * 10),
     )
 
+    image_path = models.CharField(
+        max_length=200,
+        blank=True,
+        default=''
+    )
+
+
     def __str__(self):
         return self.title
