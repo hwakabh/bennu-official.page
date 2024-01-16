@@ -25,7 +25,13 @@ jobs:
 
       # TODO: TBD
       # - name: Unit Test with Django buildin
-      # - name: Security Test with Trivy
+      - name: Security Test of Trivy with filesystem-mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: './'
+          trivy-config: .github/config/trivy.yaml
+          # https://github.com/aquasecurity/trivy-action
 
       - name: Install pack
         uses: buildpacks/github-actions/setup-pack@v5.5.1
