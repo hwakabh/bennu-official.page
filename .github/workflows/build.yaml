@@ -15,17 +15,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Login to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-        # https://github.com/docker/login-action#github-container-registry
-
       # TODO: TBD
       # - name: Unit Test with Django buildin
-      # - name: Security Test with Trivy
+
+      - name: Security Test of Trivy with filesystem-mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: './'
+          trivy-config: .github/config/trivy.yaml
+          # https://github.com/aquasecurity/trivy-action
 
       - name: Install pack
         uses: buildpacks/github-actions/setup-pack@v5.5.1
@@ -38,5 +37,7 @@ jobs:
             --path . \
             --env "$(cat .python-version)" \
 
-      # TODO: TBD
-      # - name: Sanity Check with /healthz served by gunicorn within container image
+      - name: Sanity Check with /healthz
+        run: |
+          docker compose up --build --detach && \
+          docker run --network bennu-official_default appropriate/curl -v -s --retry 3 --retry-connrefused -X GET http://django:8000/healthz ; echo
