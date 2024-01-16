@@ -20,17 +20,17 @@ class TestUrls(TestCase):
         self.assertEqual(resolve(url).func.view_class, HealthzView)
 
     def test_home_url(self):
-        url = reverse('bennuhp:home')
-        self.assertEqual(resolve(url).func, home)
+        url = reverse('bennuhp:root')
+        self.assertEqual(resolve(url).func.view_class, AppRootTemplateView)
 
     def test_biography_url(self):
         url = reverse('bennuhp:bio')
-        self.assertEqual(resolve(url).func, biography)
+        self.assertEqual(resolve(url).func.view_class, BioTemplateView)
 
     def test_discography_url(self):
         url = reverse('bennuhp:disco')
-        self.assertEqual(resolve(url).func, discography)
+        self.assertEqual(resolve(url).func.view_class, DiscoListView)
 
     def test_lives_url(self):
         url = reverse('bennuhp:live')
-        self.assertEqual(resolve(url).func, lives)
+        self.assertEqual(resolve(url).func.view_class, LivesListView)
