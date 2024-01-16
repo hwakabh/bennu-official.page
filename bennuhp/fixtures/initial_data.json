@@ -69,7 +69,7 @@
       "start_time": null,
       "price": null,
       "with_actors": [],
-      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
+      "image_path": "bennuhp/img/20150708-live.png"
     }
   },
   {
@@ -106,26 +106,10 @@
   },
   {
     "model": "bennuhp.LiveSchedule",
-    "pk": "a39891bfe32d4a40a78ff8cee4c7912d",
-    "fields": {
-      "title": "2016-07-11@Shinjuku",
-      "descriptions": "",
-      "date": "2016-07-11",
-      "venue": "Gyoen ROSSO",
-      "url": "https://bar-rosso.com/category/access",
-      "open_time": "19:00:00",
-      "start_time": null,
-      "price": null,
-      "with_actors": [],
-      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
-    }
-  },
-  {
-    "model": "bennuhp.LiveSchedule",
     "pk": "2fad9d1e87ee4fcd86d1e7854df24713",
     "fields": {
       "title": "2016-03-26@TamaPlaza",
-      "descriptions": "Finally I'm gonna perform at the solo live in March. My first live, in July 2015, I only covered. Now, I compose 6 songs in English. Though it's difficult for me to learn English and music and sing after work, many people support and encourage me. I just wanna say thank you. I'd like to give you a relax time before dinner on Saturday(26th March).",
+      "descriptions": "Finally I'm gonna perform at the solo live in March. \nMy first live, in July 2015, I only covered. Now, I compose 6 songs in English. \nThough it's difficult for me to learn English and music and sing after work, many people support and encourage me. I just wanna say thank you. \nI'd like to give you a relax time before dinner on Saturday(26th March).",
       "date": "2016-03-26",
       "venue": "TamaPlaza 3-Chome Cafe",
       "url": "https://3choome-cafe.com/",
@@ -150,6 +134,22 @@
       "price": null,
       "with_actors": [],
       "image_path": "bennuhp/img/lives-1.jpg"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "a39891bfe32d4a40a78ff8cee4c7912d",
+    "fields": {
+      "title": "2016-07-11@Shinjuku",
+      "descriptions": "",
+      "date": "2016-07-11",
+      "venue": "Gyoen ROSSO",
+      "url": "https://bar-rosso.com/category/access",
+      "open_time": "19:00:00",
+      "start_time": null,
+      "price": null,
+      "with_actors": [],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
     }
   }
 ]

@@ -13,85 +13,40 @@
   </div>
 </div>
 
+
 <div class="container desc">
+  {% for live in lives|dictsortreversed:"date" %}
   <div class="row">
-    <br><br>
+
     <div class="col-lg-6 centered">
-      <img src="{% static 'bennuhp/img/lives-1.jpg' %}" width="200" height="200" alt="">
+      <img src="{% static live.image_path %}" width="300" height="300" alt="">
     </div>
 
     <div class="col-lg-6">
-      <h4>June.8th @Takadanobaba</h4>
+      <h4>{{ live.title }}</h4>
       <p>
-        08/06/2016 (Wed) 19:00-(wassy 20:20-20:55)<br>
-        Original songs in English, Lyrics card in Japanese<br>
-        2000yen<br>
-        Yotsuya Tenmado@Takadanobaba<br>
-        <a href="http://otonami.com/cosche">http://otonami.com/cosche</a><br>
+        {{ live.descriptions }} <br>
         <br>
-        <b>act with...</b><br>
-        Morning<br>
-        Finally<br>
-        Magician<br>
-        Candle<br>
-        Cigarillo<br>
-        Rain and Piano<br>
-        Beach<br>
-        wassy<br>
-      </p>
-    </div>
-  </div>
-
-  <br><br>
-  <hr>
-  <br><br>
-  <div class="row">
-    <div class="col-lg-6 centered">
-      <img src="{% static 'bennuhp/img/lives-2.jpg' %}" width="200" height="200" alt="">
-    </div><!-- col-lg-6 -->
-    <div class="col-lg-6">
-      <h4>Mar.26th One-man live @Tama-Plaza </h4>
-      <p>
-        17:30open 18:00start<br>
-        2500yen(Proper)<br>
-        3 Chome Cafe@Tama-Plaza<br>
-        <a href="http://3choome-cafe.com">http://3choome-cafe.com</a><br>
-      </p>
-      <p>
-        Finally I'm gonna perform at the solo live in March.<br>
-        my first live, in July 2015, I only covered. Now, I compose 6 songs in English.<br>
-        Though it's difficult for me to learn English and music and sing after work, many people support and encourage me.<br>
-        I just wanna say thank you. I'd like to give you a relax time before dinner on Saturday(26th March).
-      </p>
-    </div>
-  </div>
-
-  <br><br>
-  <hr>
-  <br><br>
-  <div class="row">
-    <div class="col-lg-6 centered">
-      <img src="{% static 'bennuhp/img/lives-3.jpg' %}" width="200" height="200" alt="">
-    </div><!-- col-lg-6 -->
-    <div class="col-lg-6">
-      <h4>Jan.26th @Takadanobaba</h4>
-      <p>
-        四谷天窓.comfort presents "Story of 88 keys" ～水に映る月～<br>
-        18:30open 19:00start<br>
-        my performance 20:20-20:55<br>
-        2000yen(drink extracted：600yen per 1 drink or 1200yen for 3 drinks0)<br>
-        Yotsuya Tenmado@Takadanobaba<br>
-        <a href="http://otonami.com/comfort/map/">http://otonami.com/comfort/map/</a><br>
+        date: {{ live.date }} {% if live.start_time %}{{ live.start_time }}{% endif %}<br>
+        {% if live.price %}
+          price: {{ live.price }} <br>
+        {% endif %}
+        venue: {{ live.venue }} <br>
+        <a href="{{ live.url }}">{{ live.url }}</a><br>
         <br>
-        <b>act with...</b><br>
-        安里麻紀<br>
-        本橋早織<br>
-        沙知子<br>
+        {% if live.with_actors %}
+          {% for actor in live.with_actors %}
+            <b>{{ actor }}</b><br>
+          {% endfor %}
+        {% endif %}
       </p>
     </div>
+
   </div>
-  <br><br>
+  <hr>
+  {% endfor %}
 </div>
+
 
 <div id="r">
   <div class="container text-center">
