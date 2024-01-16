@@ -18,7 +18,11 @@ class Movie(models.Model):
     venue = models.TextField()
     descriptions = models.TextField(null=True)
     url = models.URLField()
-    image_path = models.CharField(max_length=200)
+    image_path = models.CharField(
+        max_length=200,
+        blank=True,
+        default=''
+    )
 
     def __str__(self):
         return self.title
