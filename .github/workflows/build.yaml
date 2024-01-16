@@ -40,4 +40,4 @@ jobs:
       - name: Sanity Check with /healthz
         run: |
           docker compose up --build --detach && \
-          curl -v -X GET localhost:8000/healthz ; echo
+          docker run --network container:django appropriate/curl -v -X GET http://localhost:8000/healthz ; echo
