@@ -10,7 +10,7 @@
       <h4>MUSICS</h4>
       <p>
       Singles, Albums, Covers, and Demos...<br>
-      also available at <a href="https://soundcloud.com/bennu1011"><b>SoundCloud</b></a>
+      Available at <a href="https://soundcloud.com/bennu1011"><b>SoundCloud</b></a>, and Newest contents will be avaiable soon...
       </p>
       </div>
     </div>
@@ -23,7 +23,9 @@
     {% for music in musics %}
     <div class="col-lg-4">
       <a href="{{ music.url }}">
-      <img class="img-square" src="{% static music.image_path %}" width="200" height="200" alt=""></a>
+      <img class="img-square" src="{% static music.image_path %}" width="300" height="300" alt=""></a>
+      <br>
+      <br>
       <h4> {{ music.title }} </h4>
       <p> {{ music.descriptions }} </p>
     </div>
@@ -50,7 +52,9 @@
     {% for movie in movies %}
     <div class="col-lg-4">
       <a href="{{ movie.url }}">
-      <img class="img-square" src="{% static movie.image_path %}" width="200" height="200" alt=""></a>
+      <img class="img-square" src="{% static movie.image_path %}" width="300" height="300" alt=""></a>
+      <br>
+      <br>
       <h4>{{ movie.title }}</h4>
       <p>
         {{ movie.date }} <br>
@@ -60,15 +64,5 @@
     {% endfor %}
   </div>
   <br>
-</div>
-
-<div id="r">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <p>Newest contents will be avaiable soon...</p>
-      </div>
-    </div>
-  </div>
 </div>
 {% endblock %}

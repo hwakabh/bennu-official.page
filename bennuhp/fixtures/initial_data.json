@@ -4,7 +4,7 @@
     "pk": "a5cf0e7beaa544dca706266b201382b3",
     "fields": {
       "title": "What's my love?",
-      "publish_date": "2015-07-01 12:00:00",
+      "publish_date": "2015-07-01",
       "descriptions": "First original single, Waltz with playing the piano",
       "url": "https://soundcloud.com/bennu1011/whats-my-love-original",
       "image_path": "bennuhp/img/whats-my-love.png"
@@ -15,7 +15,7 @@
     "pk": "3d1e4ebcde434332b4bf141b830fced0",
     "fields": {
       "title": "Morning",
-      "publish_date": "2016-07-18 12:00:00",
+      "publish_date": "2016-07-18",
       "descriptions": "Second original single",
       "url": "https://soundcloud.com/bennu1011/morning",
       "image_path": "bennuhp/img/morning.png"
@@ -26,7 +26,7 @@
     "pk": "5ad3c8a2eb6c41cbb26e69a956ac96c6",
     "fields": {
       "title": "Yesterday",
-      "publish_date": "2016-08-01 12:00:00",
+      "publish_date": "2016-08-01",
       "descriptions": "Cover track of The Beatles, playing the piano",
       "url": "https://soundcloud.com/bennu1011/yesterday-the-beatles",
       "image_path": "bennuhp/img/yesterday.png"
@@ -37,7 +37,7 @@
     "pk": "f7dfa97e04cb4727b6576154686fc161",
     "fields": {
       "title": "live@YotsuyaTenmado",
-      "date": "2015-07-08 12:00:00",
+      "date": "2015-07-08",
       "venue": "Yotsuya Tenmado",
       "descriptions": "First live movies at Yotsuya Tenmado.",
       "url": "https://www.youtube.com/watch?v=D2rjg39aeps",
@@ -49,7 +49,7 @@
     "pk": "ec3d2715c78b40e895377b6a498f6c42",
     "fields": {
       "title": "live@GyoenROSSO",
-      "date": "2016-07-11 12:00:00",
+      "date": "2016-07-11",
       "venue": "Gyoen ROSSO",
       "descriptions": "live movies at Gyoen ROSSO",
       "url": "https://www.youtube.com/watch?v=Ut3IBvoGNyM",
@@ -58,7 +58,98 @@
   },
   {
     "model": "bennuhp.LiveSchedule",
-    "pk": "e47b6547930f455ea85c2deeaeced1ae",
-    "fields": {}
+    "pk": "36ebc8af4223414a80078cb43a0d6c60",
+    "fields": {
+      "title": "2015-07-08@Takadanobaba",
+      "descriptions": "Bennu first live",
+      "date": "2015-07-08",
+      "venue": "Yotsuya Tenmado comfort",
+      "url": "http://otonami.com/comfort/map/",
+      "open_time": "19:00:00",
+      "start_time": null,
+      "price": null,
+      "with_actors": [],
+      "image_path": "bennuhp/img/20150708-live.png"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "020d9f84164342fb8e22c6b5c2497b2c",
+    "fields": {
+      "title": "2015-10-04@Takadanobaba",
+      "descriptions": "",
+      "date": "2015-10-04",
+      "venue": "Yotsuya Tenmado comfort",
+      "url": "http://otonami.com/comfort/map/",
+      "open_time": "19:00:00",
+      "start_time": null,
+      "price": null,
+      "with_actors": ["Silent Sprout", "安里麻紀", "山本さくら"],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "1af1fbf9bfb84717bd528fc129f85dc6",
+    "fields": {
+      "title": "2016-01-26@Shinjuku",
+      "descriptions": "Live house presents event \"Story of 88 keys\"",
+      "date": "2016-01-26",
+      "venue": "Yotsuya Tenmado comfort",
+      "url": "http://otonami.com/comfort/map/",
+      "open_time": "18:30",
+      "start_time": "19:00",
+      "price": 2000,
+      "with_actors": ["安里麻紀", "本橋早織", "沙知子"],
+      "image_path": "bennuhp/img/lives-3.jpg"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "2fad9d1e87ee4fcd86d1e7854df24713",
+    "fields": {
+      "title": "2016-03-26@TamaPlaza",
+      "descriptions": "Finally I'm gonna perform at the solo live in March. \nMy first live, in July 2015, I only covered. Now, I compose 6 songs in English. \nThough it's difficult for me to learn English and music and sing after work, many people support and encourage me. I just wanna say thank you. \nI'd like to give you a relax time before dinner on Saturday(26th March).",
+      "date": "2016-03-26",
+      "venue": "TamaPlaza 3-Chome Cafe",
+      "url": "https://3choome-cafe.com/",
+      "open_time": "17:30:00",
+      "start_time": null,
+      "price": 2500,
+      "with_actors": [],
+      "image_path": "bennuhp/img/lives-2.jpg"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "dcca6d7f22d444fea5ab24ba11c1ba82",
+    "fields": {
+      "title": "2016-06-08@Takadanobaba",
+      "descriptions": "Original songs in English, Lyrics card in Japanese. Songs: Morning, Finally, Magician, Candle, Cigarillo, Rain and Piano, Beach",
+      "date": "2016-06-08",
+      "venue": "Yotsuya Tenmado comfort",
+      "url": "http://otonami.com/comfort/map/",
+      "open_time": "19:00:00",
+      "start_time": null,
+      "price": null,
+      "with_actors": [],
+      "image_path": "bennuhp/img/lives-1.jpg"
+    }
+  },
+  {
+    "model": "bennuhp.LiveSchedule",
+    "pk": "a39891bfe32d4a40a78ff8cee4c7912d",
+    "fields": {
+      "title": "2016-07-11@Shinjuku",
+      "descriptions": "",
+      "date": "2016-07-11",
+      "venue": "Gyoen ROSSO",
+      "url": "https://bar-rosso.com/category/access",
+      "open_time": "19:00:00",
+      "start_time": null,
+      "price": null,
+      "with_actors": [],
+      "image_path": "bennuhp/img/coming-soon-lg-rotate.png"
+    }
   }
 ]
