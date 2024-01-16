@@ -1,5 +1,7 @@
+from typing import Any
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView, ListView
 from django.http import JsonResponse
 
 from bennuhp.models.music import Music
@@ -17,44 +19,47 @@ class HealthzView(View):
         )
 
 
-def home(request):
-    for r in request.GET:
-        print(r)
-    return render(request, 'bennuhp/home.html', {})
+class AppRootTemplateView(TemplateView):
+    template_name = 'bennuhp/home.html'
 
 
-def biography(request):
-    return render(request, 'bennuhp/biography.html', {})
+class BioTemplateView(TemplateView):
+    template_name = 'bennuhp/biography.html'
 
 
-def discography(request):
-    musics = Music.objects.all()
-    movies = Movie.objects.all()
-    return render(
-        request,
-        'bennuhp/discography.html',
-        {
-            "musics": musics,
-            "movies": movies
-        }
-    )
+class DiscoListView(ListView):
+    model = Music
+    context_object_name = 'musics'
+    template_name = 'bennuhp/discography.html'
+
+    def get_context_data(self):
+        ctx = super().get_context_data()
+        # Bind multiple models into single template
+        ctx.update({
+            'movies': Movie.objects.all()
+        })
+        return ctx
 
 
-def lives(request):
-    lives = LiveSchedule.objects.all()
-    return render(
-        request,
-        'bennuhp/lives.html',
-        {
-            "lives": lives
-        }
-    )
+class LivesListView(ListView):
+    # Use `queryset` for reverse sorting, instead of using `model` variables
+    queryset = LiveSchedule.objects.order_by('-date')
+    context_object_name = 'lives'
+    template_name = 'bennuhp/lives.html'
 
 
-def page_not_found(request, exception):
-    return render(
-        request,
-        'bennuhp/common/page_not_found.html',
-        {},
-        status=404
-    )
+
+class NotFoundTemplateView(TemplateView):
+    template_name = 'bennuhp/common/404_not_found.html'
+
+    # def get(self, request, *args, **kwargs):
+    #     ctx = self.get_context_data(**kwargs)
+    #     return self.render_to_response(ctx, status=404)
+
+
+class ServerErrorTemplateView(TemplateView):
+    template_name = 'bennuhp/common/500_server_error.html'
+
+    # def get(self, request, *args, **kwargs):
+    #     ctx = self.get_context_data(**kwargs)
+    #     return self.render_to_response(ctx, status=500)
