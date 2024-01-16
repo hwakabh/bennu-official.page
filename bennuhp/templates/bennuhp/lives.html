@@ -29,14 +29,15 @@
         <br>
         date: {{ live.date }} {% if live.start_time %}{{ live.start_time }}{% endif %}<br>
         {% if live.price %}
-          price: {{ live.price }} <br>
+          price: JPY {{ live.price }} <br>
         {% endif %}
         venue: {{ live.venue }} <br>
         <a href="{{ live.url }}">{{ live.url }}</a><br>
         <br>
         {% if live.with_actors %}
+          <b>act with:</b><br>
           {% for actor in live.with_actors %}
-            <b>{{ actor }}</b><br>
+            {{ actor }}<br>
           {% endfor %}
         {% endif %}
       </p>
