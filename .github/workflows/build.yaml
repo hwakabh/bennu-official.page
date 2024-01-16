@@ -37,7 +37,7 @@ jobs:
             --path . \
             --env "$(cat .python-version)" \
 
-      # TODO: TBD
       - name: Sanity Check with /healthz
         run: |
-          docker run -d ghcr.io/hwakabh/bennu-official:latest && docker image ls && docker ps -a
+          docker compose up --build --detach && \
+          curl -v -X GET localhost:8000/healthz ; echo
