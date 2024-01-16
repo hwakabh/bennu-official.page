@@ -48,10 +48,18 @@ class LivesListView(ListView):
     template_name = 'bennuhp/lives.html'
 
 
-def page_not_found(request, exception):
-    return render(
-        request,
-        'bennuhp/common/page_not_found.html',
-        {},
-        status=404
-    )
+
+class NotFoundTemplateView(TemplateView):
+    template_name = 'bennuhp/common/404_not_found.html'
+
+    # def get(self, request, *args, **kwargs):
+    #     ctx = self.get_context_data(**kwargs)
+    #     return self.render_to_response(ctx, status=404)
+
+
+class ServerErrorTemplateView(TemplateView):
+    template_name = 'bennuhp/common/500_server_error.html'
+
+    # def get(self, request, *args, **kwargs):
+    #     ctx = self.get_context_data(**kwargs)
+    #     return self.render_to_response(ctx, status=500)

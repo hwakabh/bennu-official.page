@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 
+from bennuhp.views import NotFoundTemplateView, ServerErrorTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,4 +10,5 @@ urlpatterns = [
 ]
 
 # note that Applicable only in DEBUG = False
-handler404 = 'bennuhp.views.page_not_found'
+handler404 = NotFoundTemplateView.as_view()
+handler500 = ServerErrorTemplateView.as_view()
