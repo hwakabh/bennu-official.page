@@ -31,9 +31,9 @@ class LiveSchedule(models.Model):
     )
 
     with_actors = ListCharField(
-        base_field=models.CharField(max_length=20),
+        base_field=models.CharField(max_length=20, blank=True, default=''),
         size=10,
-        max_length=(21 * 10)
+        max_length=(21 * 10),
     )
 
     def __str__(self):
