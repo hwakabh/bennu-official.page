@@ -1,4 +1,4 @@
-name: Build
+name: Tests
 
 on:
   push:
@@ -11,6 +11,17 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: bitnami/mysql:latest
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_HOSTNAME: mysql
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: bennu
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,4 +40,5 @@ jobs:
 
       - name: Unit Test with Django buildin
         run: |
+          docker ps -a && \
           python manage.py test --debug-mode -v 2
