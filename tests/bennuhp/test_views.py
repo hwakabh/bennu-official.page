@@ -1,3 +1,5 @@
+import logging
+
 from django.test import TestCase
 
 from bennuhp.views import *
@@ -6,9 +8,11 @@ from bennuhp.views import *
 class TestsRoutesStatusCode(TestCase):
     @classmethod
     def setUpTestData(self):
-        pass
+        # Initial setup for class instantiation
+        logging.disable(logging.CRITICAL)
 
     def setUp(self):
+        # Common setup logics for each test case here
         pass
 
     def test_healthz_success(self):
@@ -32,8 +36,11 @@ class TestsRoutesStatusCode(TestCase):
         self.assertEqual(resp.status_code, 200)
 
     def test_404(self):
-        resp = self.client.get('/not_exists')
+        resp = self.client.get('/not_exists/')
         self.assertEqual(resp.status_code, 404)
+
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
 
 
 class TestsResponseBody(TestCase):
