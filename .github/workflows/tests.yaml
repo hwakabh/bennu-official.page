@@ -12,7 +12,7 @@ env:
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
   # Additionally for Django container
-  MYSQL_HOSTNAME: mysql
+  MYSQL_HOSTNAME: 127.0.0.1
   MYSQL_USER: root
 
 jobs:
