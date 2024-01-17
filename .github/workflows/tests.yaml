@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+  workflow_dispatch:
+
+env:
+  # For starting up bitnami/mysql
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: bennu
+  # Additionally for Django container
+  MYSQL_HOSTNAME: 127.0.0.1
+  MYSQL_USER: root
+
+jobs:
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: bitnami/mysql:latest
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: '.python-version'
+          cache: 'pip'
+          # https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#using-the-python-version-file-input
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Unit Test with Django buildin
+        env:
+          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+        run: |
+          python manage.py test --debug-mode -v 2

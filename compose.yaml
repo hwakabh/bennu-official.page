@@ -1,7 +1,6 @@
 version: '3'
 
 x-environment: &mysql_environments
-  MYSQL_HOSTNAME: mysql
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
 
@@ -12,6 +11,7 @@ services:
     environment:
       <<: *mysql_environments
       MYSQL_USER: root
+      MYSQL_HOSTNAME: mysql
     container_name: django
     restart: always
     ports:
