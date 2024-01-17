@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/hwakabh/bennu-official/compare/v0.2.1...v0.3.0) (2024-01-17)
+
+
+### Features
+
+* updated LiveSchedules models with adding packages. ([cf61df4](https://github.com/hwakabh/bennu-official/commit/cf61df47acc4280a26797318467a0197f8feafc1))
+
+
+### Bug Fixes
+
+* **ui:** adjusted live information. ([e862625](https://github.com/hwakabh/bennu-official/commit/e8626252d2779d8ca22f115daddab368fa0e60e7))
+
+
+### Performance Improvements
+
+* changed worker_class to gthread from sync, default. ([89cd7c6](https://github.com/hwakabh/bennu-official/commit/89cd7c6f11dc99254d0906bb856f15e532e0a21e))
+
 ## [0.2.1](https://github.com/hwakabh/bennu-official/compare/v0.2.0...v0.2.1) (2024-01-15)
 
 
