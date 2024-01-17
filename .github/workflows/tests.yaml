@@ -7,6 +7,12 @@ on:
       - '!main'
   workflow_dispatch:
 
+env:
+  MYSQL_HOSTNAME: mysql
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: bennu
+  MYSQL_USER: root
+
 jobs:
   build:
     name: Build image
@@ -18,9 +24,9 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_HOSTNAME: mysql
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: bennu
+          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
 
     steps:
       - name: Checkout
@@ -39,6 +45,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Unit Test with Django buildin
+        env:
+          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
         run: |
           docker ps -a && \
           python manage.py test --debug-mode -v 2
