@@ -8,9 +8,11 @@ from bennuhp.views import *
 class TestsRoutesStatusCode(TestCase):
     @classmethod
     def setUpTestData(self):
+        # Initial setup for class instantiation
         logging.disable(logging.CRITICAL)
 
     def setUp(self):
+        # Common setup logics for each test case here
         pass
 
     def test_healthz_success(self):
