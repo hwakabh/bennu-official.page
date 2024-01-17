@@ -8,9 +8,11 @@ on:
   workflow_dispatch:
 
 env:
-  MYSQL_HOSTNAME: mysql
+  # For starting up bitnami/mysql
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
+  # Additionally for Django container
+  MYSQL_HOSTNAME: mysql
   MYSQL_USER: root
 
 jobs:
@@ -24,7 +26,6 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
           MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
           MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
 
