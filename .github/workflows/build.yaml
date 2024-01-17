@@ -15,9 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TODO: TBD
-      # - name: Unit Test with Django buildin
-
       - name: Security Test of Trivy with filesystem-mode
         uses: aquasecurity/trivy-action@master
         with:
