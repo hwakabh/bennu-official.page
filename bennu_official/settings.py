@@ -23,7 +23,7 @@ INSTALLED_APPS = [
 # https://whitenoise.readthedocs.io/en/stable/django.html#enable-whitenoise
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,11 +68,11 @@ DATABASES = {
     }
 }
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,7 +105,8 @@ STATICFILES_DIRS = (
 # - destination path of ./manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # - URL path of staticfiles, which is specified at templates in Pod by buildpacks
-STATIC_URL = '/workspace/assets/'
+# STATIC_URL = '/workspace/assets/'
+STATIC_URL = '/assets/'
 
 
 # Overwrite for local environment

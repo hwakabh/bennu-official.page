@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bennu
+  name: nginx
+  namespace: bennuhp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bennu
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: bennu
+    spec:
+      containers:
+      - image: bitnami/nginx:latest
+        imagePullPolicy: Always
+        name: nginx
+        volumeMounts:
+        - mountPath: /opt/bitnami/nginx/conf/server_blocks
+          name: nginx-conf
+        - mountPath: /usr/share/nginx/html
+          name: nginx-static
+      volumes:
+        - name: nginx-static
+          persistentVolumeClaim:
+            claimName: staticfiles
+        - name: nginx-conf
+          configMap:
+            name: nginx-etc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bennu
+  name: nginx
+  namespace: bennuhp
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: bennu
+  type: LoadBalancer

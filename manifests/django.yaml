@@ -37,6 +37,9 @@ spec:
       - image: ghcr.io/hwakabh/bennu-official:latest
         imagePullPolicy: Always
         name: django
+        volumeMounts:
+        - mountPath: /workspace/assets
+          name: django-static
         envFrom:
           - secretRef:
               name: app-secret
@@ -49,6 +52,14 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           timeoutSeconds: 10
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/cnb/process/collectstatic"]
+      volumes:
+        - name: django-static
+          persistentVolumeClaim:
+            claimName: staticfiles
 ---
 apiVersion: v1
 kind: Service
@@ -64,4 +75,4 @@ spec:
     targetPort: 8000
   selector:
     app: bennu
-  type: LoadBalancer
+  type: ClusterIP
