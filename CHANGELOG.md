@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/hwakabh/bennu-official/compare/v0.3.0...v0.4.0) (2024-01-28)
+
+
+### Features
+
+* **deploy:** implemented bitnami/nginx for serve staticfiles, instead of whitenoise. ([c552873](https://github.com/hwakabh/bennu-official/commit/c5528731429910b1e244626f7c9906a272a389ea))
+
+
+### Bug Fixes
+
+* **ci:** service name same as compose.yaml. ([450f297](https://github.com/hwakabh/bennu-official/commit/450f2973419a29f177f117a3949d54981dfc7bdf))
+* **deploy:** volume mounts with nginx. ([964caba](https://github.com/hwakabh/bennu-official/commit/964caba7a0e48079e34c53fde30bbf32b80b6409))
+
 ## [0.3.0](https://github.com/hwakabh/bennu-official/compare/v0.2.1...v0.3.0) (2024-01-17)
 
 
