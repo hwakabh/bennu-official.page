@@ -13,7 +13,7 @@ services:
     ports:
       - 8443:8443
     volumes:
-      - ./manifests/configs/nginx.conf:/opt/bitnami/nginx/conf/server_blocks
+      - ./manifests/configs:/opt/bitnami/nginx/conf/server_blocks
       - staticfiles:/usr/share/nginx/html
     depends_on:
       - gunicorn
@@ -25,7 +25,7 @@ services:
       <<: *mysql_environments
       MYSQL_USER: root
       MYSQL_HOSTNAME: mysql
-    container_name: django
+    container_name: gunicorn
     restart: always
     ports:
       - 8000:8000
