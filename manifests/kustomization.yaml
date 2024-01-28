@@ -3,12 +3,12 @@ kind: Kustomization
 namespace: bennuhp
 resources:
   - ./namespace.yaml
+  - ./minio.yaml
   - ./sealed-secrets.yaml
   - ./mysql.yaml
-  - ./staticfiles.yaml
   - ./django.yaml
   - ./nginx.yaml
 configMapGenerator:
   - name: nginx-etc
     files:
-      - ./nginx.conf
+      - ./configs/nginx.conf
