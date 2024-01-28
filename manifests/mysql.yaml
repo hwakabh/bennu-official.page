@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app: bennu
-  name: pvc-mysql-data
+  name: mysql-data
   namespace: bennuhp
 spec:
   accessModes:
@@ -49,7 +49,7 @@ spec:
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
-            claimName: pvc-mysql-data
+            claimName: mysql-data
 ---
 apiVersion: v1
 kind: Service
