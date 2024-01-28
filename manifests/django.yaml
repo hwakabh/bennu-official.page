@@ -19,6 +19,13 @@ spec:
     spec:
       initContainers:
       - image: ghcr.io/hwakabh/bennu-official:latest
+        name: collectstatic
+        command:
+        - /cnb/process/collectstatic
+        envFrom:
+          - secretRef:
+              name: app-secret
+      - image: ghcr.io/hwakabh/bennu-official:latest
         name: migrate
         command:
         - /cnb/process/migrate
@@ -37,9 +44,6 @@ spec:
       - image: ghcr.io/hwakabh/bennu-official:latest
         imagePullPolicy: Always
         name: django
-        volumeMounts:
-        - mountPath: /workspace/assets
-          name: django-static
         envFrom:
           - secretRef:
               name: app-secret
@@ -52,14 +56,6 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           timeoutSeconds: 10
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/cnb/process/collectstatic"]
-      volumes:
-        - name: django-static
-          persistentVolumeClaim:
-            claimName: staticfiles
 ---
 apiVersion: v1
 kind: Service
@@ -70,7 +66,7 @@ metadata:
   namespace: bennuhp
 spec:
   ports:
-  - port: 80
+  - port: 8000
     protocol: TCP
     targetPort: 8000
   selector:
