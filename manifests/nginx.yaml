@@ -24,6 +24,7 @@ spec:
         volumeMounts:
         - mountPath: /opt/bitnami/nginx/conf/server_blocks
           name: nginx-conf
+      volumes:
         - name: nginx-conf
           configMap:
             name: nginx-etc
