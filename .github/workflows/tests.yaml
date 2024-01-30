@@ -36,6 +36,14 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      minio:
+        image: bitnami/minio:latest
+        ports:
+          - 9000:9000
+        env:
+          MINIO_ROOT_USER: minioadmin
+          MINIO_ROOT_PASSWORD: minio123
+          MINIO_DEFAULT_BUCKETS: bennu:public
 
     steps:
       - name: Checkout
