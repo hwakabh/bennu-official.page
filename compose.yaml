@@ -32,7 +32,10 @@ services:
     volumes:
       - staticfiles:/workspace/assets
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
 
   mysql:
     image: bitnami/mysql:latest
@@ -44,9 +47,34 @@ services:
     ports:
       - 3306:3306
     tty: true
+    healthcheck:
+      test: "mysqladmin ping || exit 1"
+      interval: 3s
+      retries: 3
     volumes:
       - mysql-data:/opt/bitnami/mysql/data
+
+  minio:
+    image: bitnami/minio:latest
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_DEFAULT_BUCKETS: bennu:public
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - minio-data:/bitnami/minio/data
+    healthcheck:
+      test: "mc ping local --count 1 || exit 1"
+      interval: 3s
+      retries: 3
+    deploy:
+      restart_policy:
+        condition: on-failure
 
 volumes:
   staticfiles:
   mysql-data:
+  minio-data:

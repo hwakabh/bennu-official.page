@@ -11,9 +11,15 @@ env:
   # For starting up bitnami/mysql
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
+  # For starting up bitnami/minio
+  MINIO_ROOT_USER: minioadmin
+  MINIO_ROOT_PASSWORD: minio123
   # Additionally for Django container
   MYSQL_HOSTNAME: 127.0.0.1
   MYSQL_USER: root
+  MINIO_STORAGE_ENDPOINT: localhost:9000
+  MINIO_STORAGE_ACCESS_KEY: minioadmin
+  MINIO_STORAGE_SECRET_KEY: minio123
 
 jobs:
   tests:
@@ -33,6 +39,14 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      minio:
+        image: bitnami/minio:latest
+        ports:
+          - 9000:9000
+        env:
+          MINIO_ROOT_USER: ${{ env.MINIO_ROOT_USER }}
+          MINIO_ROOT_PASSWORD: ${{ env.MINIO_ROOT_PASSWORD }}
+          MINIO_DEFAULT_BUCKETS: bennu:public
 
     steps:
       - name: Checkout
@@ -56,5 +70,8 @@ jobs:
           MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
           MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
           MYSQL_USER: ${{ env.MYSQL_USER }}
+          MINIO_STORAGE_ENDPOING: ${{ env.MINIO_STORAGE_ENDPOINT }}
+          MINIO_STORAGE_ACCESS_KEY: ${{ env.MINIO_STORAGE_ACCESS_KEY }}
+          MINIO_STORAGE_SECRET_KEY: ${{ env.MINIO_STORAGE_SECRET_KEY }}
         run: |
           python manage.py test --debug-mode -v 2
