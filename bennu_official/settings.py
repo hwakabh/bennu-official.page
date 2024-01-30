@@ -110,8 +110,7 @@ STATICFILES_DIRS = (
 # - destination path of ./manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # - URL path of staticfiles, which is specified at templates in Pod by buildpacks
-# STATIC_URL = '/workspace/assets/'
-# STATIC_URL = '/assets/'
+STATIC_URL = '/workspace/assets/'
 
 
 MINIO_STORAGE_ENDPOINT = os.environ.get('MINIO_STORAGE_ENDPOINT')
