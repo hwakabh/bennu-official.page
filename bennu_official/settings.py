@@ -69,15 +69,15 @@ DATABASES = {
     }
 }
 
-STORAGES = {
-    "default": {
-        "BACKEND": "minio_storage.storage.MinioMediaStorage"
-    },
-    "staticfiles": {
-        # "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-        "BACKEND": "minio_storage.storage.MinioStaticStorage"
-    },
-}
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "minio_storage.storage.MinioMediaStorage"
+#     },
+#     "staticfiles": {
+#         # "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#         "BACKEND": "minio_storage.storage.MinioStaticStorage"
+#     },
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -110,14 +110,14 @@ STATICFILES_DIRS = (
 # - destination path of ./manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # - URL path of staticfiles, which is specified at templates in Pod by buildpacks
-STATIC_URL = '/workspace/assets/'
+STATIC_URL = '/assets/'
 
 
-MINIO_STORAGE_ENDPOINT = os.environ.get('MINIO_STORAGE_ENDPOINT')
-MINIO_STORAGE_ACCESS_KEY = os.environ.get('MINIO_STORAGE_ACCESS_KEY')
-MINIO_STORAGE_SECRET_KEY = os.environ.get('MINIO_STORAGE_SECRET_KEY')
-MINIO_STORAGE_USE_HTTPS = False
-MINIO_STORAGE_STATIC_BUCKET_NAME = 'bennu'
+# MINIO_STORAGE_ENDPOINT = os.environ.get('MINIO_STORAGE_ENDPOINT')
+# MINIO_STORAGE_ACCESS_KEY = os.environ.get('MINIO_STORAGE_ACCESS_KEY')
+# MINIO_STORAGE_SECRET_KEY = os.environ.get('MINIO_STORAGE_SECRET_KEY')
+# MINIO_STORAGE_USE_HTTPS = False
+# MINIO_STORAGE_STATIC_BUCKET_NAME = 'bennu'
 
 # Overwrite for local environment
 try:
