@@ -18,13 +18,13 @@ spec:
         app: bennu
     spec:
       initContainers:
-      - image: ghcr.io/hwakabh/bennu-official:latest
-        name: collectstatic
-        command:
-        - /cnb/process/collectstatic
-        envFrom:
-          - secretRef:
-              name: app-secret
+      # - image: ghcr.io/hwakabh/bennu-official:latest
+      #   name: collectstatic
+      #   command:
+      #   - /cnb/process/collectstatic
+      #   envFrom:
+      #     - secretRef:
+      #         name: app-secret
       - image: ghcr.io/hwakabh/bennu-official:latest
         name: migrate
         command:
@@ -47,6 +47,9 @@ spec:
         envFrom:
           - secretRef:
               name: app-secret
+        volumeMounts:
+        - mountPath: /workspace/assets
+          name: static
         readinessProbe:
           httpGet:
             path: /healthz
@@ -56,6 +59,10 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           timeoutSeconds: 10
+      volumes:
+      - name: static
+        persistentVolumeClaim:
+          claimName: staticfiles
 ---
 apiVersion: v1
 kind: Service

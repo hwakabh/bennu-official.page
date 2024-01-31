@@ -1,33 +1,17 @@
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  labels:
-    app: bennu
-  name: mysql-data
-  namespace: bennuhp
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: standard-rwo  # GKE option
-  volumeMode: Filesystem
----
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: bennu
   name: mysql
   namespace: bennuhp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: bennu
-  strategy: {}
+  serviceName: mysql
   template:
     metadata:
       labels:
@@ -44,12 +28,22 @@ spec:
         - name: mysql
           containerPort: 3306
         envFrom:
-          - secretRef:
-              name: mysql-secret
-      volumes:
-        - name: mysql-data
-          persistentVolumeClaim:
-            claimName: mysql-data
+        - secretRef:
+            name: mysql-secret
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-data
+      namespace: bennu
+      labels:
+        app: bennu
+    spec:
+      storageClassName: standard-rwo
+      accessModes:
+      - ReadWriteOnce
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 5Gi
 ---
 apiVersion: v1
 kind: Service
@@ -65,4 +59,4 @@ spec:
     targetPort: 3306
   selector:
     app: bennu
-  type: ClusterIP
+  clusterIP: None
