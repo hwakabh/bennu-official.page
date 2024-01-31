@@ -3,8 +3,9 @@ kind: Kustomization
 namespace: bennuhp
 resources:
   - ./namespace.yaml
-  - ./minio.yaml
   - ./sealed-secrets.yaml
+  - ./nfs-server.yaml
+  - ./staticfiles.yaml
   - ./mysql.yaml
   - ./django.yaml
   - ./nginx.yaml

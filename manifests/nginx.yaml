@@ -24,10 +24,15 @@ spec:
         volumeMounts:
         - mountPath: /opt/bitnami/nginx/conf/server_blocks
           name: nginx-conf
+        - mountPath: /usr/share/nginx/html
+          name: static
       volumes:
-        - name: nginx-conf
-          configMap:
-            name: nginx-etc
+      - name: nginx-conf
+        configMap:
+          name: nginx-etc
+      - name: static
+        persistentVolumeClaim:
+          claimName: staticfiles
 ---
 apiVersion: v1
 kind: Service
@@ -43,4 +48,4 @@ spec:
     targetPort: 8443
   selector:
     app: bennu
-  type: LoadBalancer
+  type: ClusterIP
