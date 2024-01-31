@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bennuhp',
-    'minio_storage',
+    # 'minio_storage',
 ]
 
 # Strict order for whitenoise
