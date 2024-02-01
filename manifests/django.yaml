@@ -18,13 +18,6 @@ spec:
         app: bennu
     spec:
       initContainers:
-      # - image: ghcr.io/hwakabh/bennu-official:latest
-      #   name: collectstatic
-      #   command:
-      #   - /cnb/process/collectstatic
-      #   envFrom:
-      #     - secretRef:
-      #         name: app-secret
       - image: ghcr.io/hwakabh/bennu-official:latest
         name: migrate
         command:
@@ -50,6 +43,14 @@ spec:
         volumeMounts:
         - mountPath: /workspace/assets
           name: static
+        # Need for collectstatic to RWX shared volumes
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        lifecycle:
+          postStart:
+            exec:
+              command: ['/cnb/process/collectstatic']
         readinessProbe:
           httpGet:
             path: /healthz
