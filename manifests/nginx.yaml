@@ -24,7 +24,7 @@ spec:
         volumeMounts:
         - mountPath: /opt/bitnami/nginx/conf/server_blocks
           name: nginx-conf
-        - mountPath: /usr/share/nginx/html
+        - mountPath: /usr/share/nginx/assets
           name: static
       volumes:
       - name: nginx-conf
@@ -48,4 +48,4 @@ spec:
     targetPort: 8443
   selector:
     app: bennu
-  type: ClusterIP
+  type: LoadBalancer
