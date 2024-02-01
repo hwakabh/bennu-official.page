@@ -11,6 +11,7 @@ resources:
   - ./mysql.yaml
   - ./django.yaml
   - ./nginx.yaml
+  - ./ingress.yaml
 configMapGenerator:
   - name: nginx-etc
     files:

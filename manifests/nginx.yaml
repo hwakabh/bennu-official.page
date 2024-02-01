@@ -52,33 +52,3 @@ spec:
   selector:
     app: bennu
   type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: bennu-app
-  namespace: bennuhp
-spec:
-  ingressClassName: "nginx"
-  defaultBackend:
-    service:
-      name: nginx
-      port:
-        number: 80
-  rules:
-  - http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: django
-            port:
-              number: 8000
-      - pathType: Prefix
-        path: "/assets"
-        backend:
-          service:
-            name: nginx
-            port:
-              number: 80
