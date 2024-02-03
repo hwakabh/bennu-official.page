@@ -2,8 +2,9 @@ name: Image Cleanup
 
 on:
   schedule:
-    # Runs once in every day
-    - cron: '0 0 * * *'
+    # Runs on 19:00 JST every day, note that cron syntax applied as UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch:
 
 jobs:
   clean-ghcr:
@@ -14,7 +15,7 @@ jobs:
         uses: snok/container-retention-policy@v2
         with:
           image-names: bennu-official
-          cut-off: 1 days ago UTC
+          cut-off: 1 days ago JST
           # Keep 1 image within 1 days ago
           keep-at-least: 1
           account-type: personal
