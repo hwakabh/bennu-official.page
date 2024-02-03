@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/hwakabh/bennu-official/compare/v0.5.0...v0.6.0) (2024-02-03)
+
+
+### Features
+
+* **ci:** added retention policies for GHCR. ([21aa6fe](https://github.com/hwakabh/bennu-official/commit/21aa6fe8ebb82f1966ade27c3358fb5a94791024))
+
+
+### Bug Fixes
+
+* **ci:** updated timezone and added workflow_dispatch for debug. ([23ae5f8](https://github.com/hwakabh/bennu-official/commit/23ae5f8f3b5c6d64c75d60971206646fc1e3fb71))
+
 ## [0.5.0](https://github.com/hwakabh/bennu-official/compare/v0.4.0...v0.5.0) (2024-02-01)
 
 
