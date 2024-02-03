@@ -1,5 +1,46 @@
 # Changelog
 
+## [0.6.0](https://github.com/hwakabh/bennu-official/compare/v0.5.0...v0.6.0) (2024-02-03)
+
+
+### Features
+
+* **ci:** added retention policies for GHCR. ([21aa6fe](https://github.com/hwakabh/bennu-official/commit/21aa6fe8ebb82f1966ade27c3358fb5a94791024))
+
+
+### Bug Fixes
+
+* **ci:** updated timezone and added workflow_dispatch for debug. ([23ae5f8](https://github.com/hwakabh/bennu-official/commit/23ae5f8f3b5c6d64c75d60971206646fc1e3fb71))
+
+## [0.5.0](https://github.com/hwakabh/bennu-official/compare/v0.4.0...v0.5.0) (2024-02-01)
+
+
+### Features
+
+* added RWX volumes using nfs-server instead of MinIO. ([780d93a](https://github.com/hwakabh/bennu-official/commit/780d93af1f45e695d5d1279044bfb52728eb53cd))
+* **compose:** added local MinIO with bitnami/minio image. ([c0f8b32](https://github.com/hwakabh/bennu-official/commit/c0f8b32a0e4dce99f7711338e21733d425cb920c))
+* **deploy:** added installer manifests of ingress-nginx-controller. ([9e67fc5](https://github.com/hwakabh/bennu-official/commit/9e67fc574cae88d9487595c58e5db3560f25d6e0))
+* **deploy:** replaced shared volume with object storage. ([2f8989f](https://github.com/hwakabh/bennu-official/commit/2f8989f31514a34440e7366b068fd170fdceecdb))
+* **deploy:** replaced with statefulset for MySQL/MinIO. ([f4bc591](https://github.com/hwakabh/bennu-official/commit/f4bc59196f0dc34967411963cd38651bffb43295))
+
+
+### Bug Fixes
+
+* **ci:** added envars of MinIO for runnings tests. ([2c0c72b](https://github.com/hwakabh/bennu-official/commit/2c0c72b7c34b18bd1acf123e24f11df250144345))
+* **ci:** enabled STATIC_URL for test CI. ([c254560](https://github.com/hwakabh/bennu-official/commit/c254560530d834d397de0e42571a3decc20ff647))
+* **ci:** replaced minio image from official to bitnami. ([8ebd917](https://github.com/hwakabh/bennu-official/commit/8ebd917927102afc4f9c47583d3b1c477186e692))
+* **deploy:** fixed collectstatic configurations. ([c805875](https://github.com/hwakabh/bennu-official/commit/c805875d2a7b307933bb6ddd2ae320fb42289687))
+* **deploy:** updated nginx config and manifests. ([984384f](https://github.com/hwakabh/bennu-official/commit/984384f78d0548e12e9a109cc90123a0ea5f288e))
+* **security:** moved secret as github env. ([23498f4](https://github.com/hwakabh/bennu-official/commit/23498f43321e46d867c3bc1177625dd55a11bca5))
+
+
+### Performance Improvements
+
+* added ingress and scaled out backend nginx pods. ([2ce6d18](https://github.com/hwakabh/bennu-official/commit/2ce6d185ccf52abb97fafe1bba0b48e316b17e6d))
+* commented out annotations as external load balancer. ([8342017](https://github.com/hwakabh/bennu-official/commit/8342017ad9d2dc2119075b9ea846aeb72d7e8068))
+* commented out annotations as external load balancer. ([742c067](https://github.com/hwakabh/bennu-official/commit/742c067b13bd063f7a709cf3c714c5aef9a57640))
+* scaled deployment/django and notes as nginx-controller. ([cb56c48](https://github.com/hwakabh/bennu-official/commit/cb56c48688a414bada569fe0792497155591a936))
+
 ## [0.4.0](https://github.com/hwakabh/bennu-official/compare/v0.3.0...v0.4.0) (2024-01-28)
 
 
