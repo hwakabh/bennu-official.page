@@ -17,7 +17,7 @@ docs:
 tests:
 - changed-files:
   - any-glob-to-any-file: ['tests/**/*']
-- head-branch: ['^test/']
+- head-branch: ['^test']
 
 ui:
 - changed-files:
@@ -27,4 +27,4 @@ bug:
 - head-branch: ['^fix/', '^hotfix/']
 
 release:
-- head-branch: ['^release-please*']
+- head-branch: ['^release-please']
