@@ -27,4 +27,4 @@ bug:
 - head-branch: ['^fix/', '^hotfix/']
 
 release:
-- head-branch: ['^release-please']
+- head-branch: ['^release\-please']
