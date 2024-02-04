@@ -1,12 +1,9 @@
 # Bennu Official Homepage
-
-- Official Homepage for Bennu
-  - Formerly: https://bennu-official-hp.herokuapp.com/home/
+Official Homepage for Bennu
 
 ***
 
 ## System Requirements
-
 - Runtime and Component versions
   - Python : 3.11.5
   - Django : 5.0
@@ -17,13 +14,24 @@
 Please setup the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development,
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
+## Deployments
+As this application have been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes.
+For deployment, we expect to run them on GKE, Google Kubernetes Engine, by Google Cloud,
+but since we have kubernetes manifests in the repo, and there are few dependencies to GKE, you can also run app with any Kubernetes.
+
+### Deployment dependencies with GKE
+As the following kubernetes resources have leveraged with features of Google Cloud, in case you will apply manifests to your non-GKE cluster,
+you have to update the values from default, which are defined in `./manifests/*` directory.
+- kind: StorageClass
+- kind: Ingress
+
 ## Application Diagram
 
 ![app-digram](./app-diagram.drawio.svg)
 
 ***
 
-## Running and debug locally
+## Running applications locally
 
 ### MySQL database
 TODO: TBA
@@ -47,6 +55,9 @@ If you have already used TCP/8000, you could specify another one with the comman
 # In case, when you need to emulate production on local, you should use gunicorn
 % gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
 ```
+
+### NGINX reverse-proxy
+TODO: TBA
 
 ***
 
