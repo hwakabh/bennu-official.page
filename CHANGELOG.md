@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.2](https://github.com/hwakabh/bennu-official/compare/v0.6.1...v0.6.2) (2024-02-04)
+
+
+### Bug Fixes
+
+* **ci:** changed token-type from github-token to PAT. ([6a264ae](https://github.com/hwakabh/bennu-official/commit/6a264ae829aae6d966919c1c2f612bab36efd025))
+* **ci:** updated workflow triggers to run all branch updates. ([5c69207](https://github.com/hwakabh/bennu-official/commit/5c692073240d1134a417f9c46df8d2b34449bde0))
+
+## [0.6.1](https://github.com/hwakabh/bennu-official/compare/v0.6.0...v0.6.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* **ci:** escaped hyphen ([ef99919](https://github.com/hwakabh/bennu-official/commit/ef999192286a860d5bef27f8f0222b77061f68b0))
+* **ci:** Simplified regexp of head-branch ([189bc3d](https://github.com/hwakabh/bennu-official/commit/189bc3d2e247560c9bda2350385e44425a1feb6b))
+* **ci:** updated regexp in config. ([cd43a75](https://github.com/hwakabh/bennu-official/commit/cd43a75ee240d9f04596904e62183d572299ff2d))
+
 ## [0.6.0](https://github.com/hwakabh/bennu-official/compare/v0.5.0...v0.6.0) (2024-02-03)
 
 

@@ -19,5 +19,4 @@ jobs:
           # Keep 1 image within 1 days ago
           keep-at-least: 1
           account-type: personal
-          token-type: github-token
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_PACKAGE_CLEANUP }}
