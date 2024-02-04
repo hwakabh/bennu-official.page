@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.7.0](https://github.com/hwakabh/bennu-official/compare/v0.6.3...v0.7.0) (2024-02-04)
+
+
+### Features
+
+* **ci:** added release-please config for labelings. ([9f2233f](https://github.com/hwakabh/bennu-official/commit/9f2233fa16791177a2ac393b7159f0073f27c6d2))
+
+
+### Bug Fixes
+
+* **ci:** added branches to pull_request_target. ([c14fcee](https://github.com/hwakabh/bennu-official/commit/c14fceee680131900775af218a90f2a92e81c485))
+* **ci:** added manifest-file for release-please. ([54e848e](https://github.com/hwakabh/bennu-official/commit/54e848ee3897f1417c1df28da57c8c43da7b3e14))
+* **ci:** removed branches associations. ([5ffd7ed](https://github.com/hwakabh/bennu-official/commit/5ffd7edcf04540e12c5b041cbba23cf0c3654b4b))
+* **ci:** updated manifest-file for release-please. ([34712d9](https://github.com/hwakabh/bennu-official/commit/34712d96463b27704d7c57a7630c8bf9891a8f7e))
+
+
+### Reverts
+
+* **ci:** added relations to all branches for e2e. ([081eba0](https://github.com/hwakabh/bennu-official/commit/081eba0966a945bcf113c9ae81a72c8bce02eb4a))
+
 ## [0.6.3](https://github.com/hwakabh/bennu-official/compare/v0.6.2...v0.6.3) (2024-02-04)
 
 
