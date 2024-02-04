@@ -1,9 +1,7 @@
 name: "Pull Request Labeler"
 
 on:
-  push:
-    branches:
-      - '**'
+  pull_request:
   workflow_dispatch:
 
 permissions:
