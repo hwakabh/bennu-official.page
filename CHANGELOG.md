@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.7.1](https://github.com/hwakabh/bennu-official/compare/v0.7.0...v0.7.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* **docs:** added notes for deployment. ([8b0b94e](https://github.com/hwakabh/bennu-official/commit/8b0b94e8208e55cf27c70c67ec6e109992425931))
+* **release-please:** removed version from PR body. ([c2e214e](https://github.com/hwakabh/bennu-official/commit/c2e214ee82a646f57f9933a669fbb9f945e5b147))
+* **release-please:** typo. ([6d2c9ff](https://github.com/hwakabh/bennu-official/commit/6d2c9ffeb515770dce7b64fb4664cb1a54a3d2c6))
+
 ## [0.7.0](https://github.com/hwakabh/bennu-official/compare/v0.6.3...v0.7.0) (2024-02-04)
 
 
