@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.3](https://github.com/hwakabh/bennu-official/compare/v0.6.2...v0.6.3) (2024-02-04)
+
+
+### Bug Fixes
+
+* **ci:** added workflow_dispatch to release-please. ([0fbbacd](https://github.com/hwakabh/bennu-official/commit/0fbbacd3638e1127f2044a04dbef20eb89cd18ec))
+* **ci:** updated workflow triggers. ([c4c4f11](https://github.com/hwakabh/bennu-official/commit/c4c4f11a4c53d54fc35dd156cab3386c1e6fe96a))
+
 ## [0.6.2](https://github.com/hwakabh/bennu-official/compare/v0.6.1...v0.6.2) (2024-02-04)
 
 
