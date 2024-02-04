@@ -16,4 +16,4 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
-          release-type: python
+          config-file: '.github/config/release-please-config.json'
