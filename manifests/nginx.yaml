@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: bennu
+    tier: web
   name: nginx
   namespace: bennuhp
 spec:
@@ -11,11 +12,13 @@ spec:
   selector:
     matchLabels:
       app: bennu
+      tier: web
   strategy: {}
   template:
     metadata:
       labels:
         app: bennu
+        tier: web
     spec:
       containers:
       - image: bitnami/nginx:latest
@@ -39,6 +42,7 @@ kind: Service
 metadata:
   labels:
     app: bennu
+    tier: web
   name: nginx
   namespace: bennuhp
   # annotations:
@@ -51,4 +55,5 @@ spec:
     targetPort: 8443
   selector:
     app: bennu
+    tier: web
   type: ClusterIP

@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: bennu
+    tier: app
   name: django
   namespace: bennuhp
 spec:
@@ -11,11 +12,13 @@ spec:
   selector:
     matchLabels:
       app: bennu
+      tier: app
   strategy: {}
   template:
     metadata:
       labels:
         app: bennu
+        tier: app
     spec:
       initContainers:
       - image: ghcr.io/hwakabh/bennu-official:latest
@@ -70,6 +73,7 @@ kind: Service
 metadata:
   labels:
     app: bennu
+    tier: app
   name: django
   namespace: bennuhp
 spec:
@@ -79,4 +83,5 @@ spec:
     targetPort: 8000
   selector:
     app: bennu
+    tier: app
   type: ClusterIP
