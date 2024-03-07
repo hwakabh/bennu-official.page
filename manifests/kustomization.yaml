@@ -6,7 +6,7 @@ resources:
   - ./sealed-secrets.yaml
   - ./nfs-server.yaml
   - ./staticfiles.yaml
-  # - ./mysql.yaml
+  - ./mysql.yaml
   - ./django.yaml
   - ./nginx.yaml
   - ./ingress.yaml
@@ -14,6 +14,7 @@ configMapGenerator:
   - name: nginx-etc
     files:
       - ./configs/nginx.conf
+# tiers of web/app/db have all 3 replicas as default
 replicas:
   - name: django
     count: 1
