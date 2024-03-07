@@ -4,6 +4,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: bennu
+    tier: db
   name: mysql
   namespace: bennuhp
 spec:
@@ -11,11 +12,13 @@ spec:
   selector:
     matchLabels:
       app: bennu
+      tier: db
   serviceName: mysql
   template:
     metadata:
       labels:
         app: bennu
+        tier: db
     spec:
       containers:
       - name: mysql
@@ -36,6 +39,7 @@ spec:
       namespace: bennu
       labels:
         app: bennu
+        tier: db
     spec:
       storageClassName: standard-rwo
       accessModes:
@@ -52,6 +56,7 @@ metadata:
   namespace: bennuhp
   labels:
     app: bennu
+    tier: db
 spec:
   ports:
   - port: 3306
@@ -59,4 +64,5 @@ spec:
     targetPort: 3306
   selector:
     app: bennu
+    tier: db
   clusterIP: None
