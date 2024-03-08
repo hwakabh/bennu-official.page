@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.7.2](https://github.com/hwakabh/bennu-official/compare/v0.7.1...v0.7.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* **ui:** enabled to flip active class in both &lt;li&gt; and <a> ([78ad1ff](https://github.com/hwakabh/bennu-official/commit/78ad1ff127c410b5759cf86e559e2def6b245a61))
+
+
+### Performance Improvements
+
+* **build:** enabled caches on nginx Pods. ([f0f48e7](https://github.com/hwakabh/bennu-official/commit/f0f48e7bbd19233f1cf79350dc61265c9878a73b))
+* **build:** enforced replicas of django Pods. ([6529d2e](https://github.com/hwakabh/bennu-official/commit/6529d2ecc566857269e71c43fb43c7b104f1c8af))
+* fixed routing unstable issues with LabelSelectors. ([3570e1d](https://github.com/hwakabh/bennu-official/commit/3570e1d5bc328435b94531aa381d98ccdc6e5cf7))
+
 ## [0.7.1](https://github.com/hwakabh/bennu-official/compare/v0.7.0...v0.7.1) (2024-02-04)
 
 
