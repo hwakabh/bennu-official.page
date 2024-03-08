@@ -14,7 +14,3 @@ configMapGenerator:
   - name: nginx-etc
     files:
       - ./configs/nginx.conf
-# tiers of web/app/db have all 3 replicas as default
-replicas:
-  - name: django
-    count: 1
