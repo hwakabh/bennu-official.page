@@ -94,28 +94,25 @@ a:after {
 	font-size: 14px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-}
-
-.navbar-inverse {
 	background: #2d2d2d;
 	border-color: #2d2d2d;
 }
 
 /* highlight colour of the current pages */
-.navbar-inverse .navbar-nav > .active > a {
+.navbar-nav > .active > a {
 /*	background: #ff7878 */
 	background: #000080
 
 }
 
-.navbar-inverse .navbar-brand {
+.navbar-brand {
 	color: #999999;
 	font-weight: bolder;
 	font-size: 22px;
 	letter-spacing: 1px;
 }
 
-.navbar-inverse .navbar-brand i {
+.navbar-brand i {
 	color: #ff7878;
 	font-size: 22px;
 	letter-spacing: 1px;
