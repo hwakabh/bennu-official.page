@@ -23,7 +23,7 @@ jobs:
         # https://github.com/docker/login-action#github-container-registry
 
       - name: Install pack
-        uses: buildpacks/github-actions/setup-pack@v5.5.3
+        uses: buildpacks/github-actions/setup-pack@v5.5.4
         # https://github.com/buildpacks/github-actions#setup-pack-cli-action
 
       - name: Publish packages
