@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,11 +9,11 @@ from . import views
 app_name = 'bennuhp'
 
 urlpatterns = [
-    path('healthz', views.HealthzView.as_view(), name='healthz'),
-    path('biography/', views.BioTemplateView.as_view(), name='bio'),
-    path('discography/', views.DiscoListView.as_view(), name='disco'),
-    path('lives/', views.LivesListView.as_view(), name='live'),
-    path('', views.AppRootTemplateView.as_view(), name='root'),
+    re_path('healthz', views.HealthzView.as_view(), name='healthz'),
+    re_path('biography/', views.BioTemplateView.as_view(), name='bio'),
+    re_path('discography/', views.DiscoListView.as_view(), name='disco'),
+    re_path('lives/', views.LivesListView.as_view(), name='live'),
+    re_path(r'^$', views.AppRootTemplateView.as_view(), name='root'),
 ]
 
 if settings.DEBUG:
