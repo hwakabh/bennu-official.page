@@ -1,9 +1,8 @@
-# Bennu Official Homepage
-Official Homepage for Bennu
+# bennu_official
+Bennu Official Homepage, with Python Django MVC
 
-***
 
-## System Requirements
+## Prerequisites
 - Runtime and Component versions
   - Python : 3.11.5
   - Django : 5.0
@@ -29,18 +28,42 @@ you have to update the values from default, which are defined in `./manifests/*`
 
 ![app-digram](./app-diagram.drawio.svg)
 
-***
+
 
 ## Running applications locally
 
 ### MySQL database
-TODO: TBA
+Since Django would use SQLite3 as default backend database, but in this project we have intendedly disabled it for avoiding differences of deployment between production & development.
+Indeed, bennu_official application expects MySQL as its default backend, and there are several options to prepare MySQL database on your laptop.
+
+As described in previous section, when you have Docker Desktop or OrbStack in laptop, the easiest way to setup MySQL is:
+
+```shell
+# Start only MySQL container with docker-compose
+% docker compose up -d mysql
+[+] Running 4/4
+ ✔ Network bennu-official_default       Created            0.0s
+ ✔ Volume "bennu-official_mysql-data"   Created            0.0s
+ ✔ Volume "bennu-official_staticfiles"  Created            0.0s
+ ✔ Container mysql                      Started
+```
+
+Alternaternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for bennu_official.
+For starting Django application in the next step, you need to provide its credentials manually:
+
+```shell
+% export MYSQL_DATABASE='****'          # default: bennu
+% export MYSQL_USER='****'              # default: root
+% export MYSQL_HOSTNAME='****'          # default: mysql
+% export MYSQL_ROOT_PASSWORD='****'     # default: root
+#-> TBD: this key is actually not for MySQL root user as application requirement
+```
 
 ### Django application
 Please note that the default ports for djang use is `TCP/8000`.
 If you have already used TCP/8000, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
 
-```bash
+```shell
 # Install dependencies
 % pip install -r requirements.txt
 
@@ -52,15 +75,26 @@ If you have already used TCP/8000, you could specify another one with the comman
 
 # Start application
 % python manage.py runserver
-# In case, when you need to emulate production on local, you should use gunicorn
+# In case, when you need to emulate WSGI server same as production on local environment, you should use gunicorn
 % gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
 ```
 
 ### NGINX reverse-proxy
 TODO: TBA
 
-***
+
+## Tests
+In this project, we adopt builtin testing frameworks of Django, based on Python standard libs `unittest`.
+For running unittest in your local environment, you can use:
+
+```shell
+# Run all tests in ./tests directory
+% python manage.py test -v 2
+```
+
+Please note that, some of the features like `handler404` or `handler500` are used in this application, and these are only applicable to production environment,
+so that there might be differences between unit test results and production environment.
+
 
 ## License
-
-- This application is licensed by BSD License since basically using Django framework.
+This application is licensed by BSD License since generally based on Django framework.
