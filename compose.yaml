@@ -1,5 +1,3 @@
-version: '3'
-
 x-environment: &mysql_environments
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
