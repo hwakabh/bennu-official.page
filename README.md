@@ -10,30 +10,35 @@ Bennu Official Homepage, with Python Django MVC
 - `pip3` is used as package management: version `23.3.2`
 - `pyenv`: `2.3.27` on macOS, M1 Apple Silicon
 
-Please setup the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development,
+Please setup the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
+- Container engines
+  - [Docker Desktop](https://docs.docker.com/desktop/)
+  - [OrbStack](https://orbstack.dev)
+
+
 ## Deployments
-As this application have been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes.
-For deployment, we expect to run them on GKE, Google Kubernetes Engine, by Google Cloud,
+As this application have been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes. \
+For deployment, we expect to run them on GKE, Google Kubernetes Engine, by Google Cloud, \
 but since we have kubernetes manifests in the repo, and there are few dependencies to GKE, you can also run app with any Kubernetes.
 
 ### Deployment dependencies with GKE
-As the following kubernetes resources have leveraged with features of Google Cloud, in case you will apply manifests to your non-GKE cluster,
+As the following kubernetes resources have leveraged with features of Google Cloud, in case you will apply manifests to your non-GKE cluster, \
 you have to update the values from default, which are defined in `./manifests/*` directory.
 - kind: StorageClass
 - kind: Ingress
+
 
 ## Application Diagram
 
 ![app-digram](./app-diagram.drawio.svg)
 
 
-
-## Running applications locally
+## Running locally
 
 ### MySQL database
-Since Django would use SQLite3 as default backend database, but in this project we have intendedly disabled it for avoiding differences of deployment between production & development.
+Since Django would use SQLite3 as default backend database, but in this project we have intendedly disabled it for avoiding differences of deployment between production & development. \
 Indeed, bennu_official application expects MySQL as its default backend, and there are several options to prepare MySQL database on your laptop.
 
 As described in previous section, when you have Docker Desktop or OrbStack in laptop, the easiest way to setup MySQL is:
@@ -48,7 +53,7 @@ As described in previous section, when you have Docker Desktop or OrbStack in la
  ✔ Container mysql                      Started
 ```
 
-Alternaternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for bennu_official.
+Alternaternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for `bennu_official`. \
 For starting Django application in the next step, you need to provide its credentials manually:
 
 ```shell
@@ -60,7 +65,7 @@ For starting Django application in the next step, you need to provide its creden
 ```
 
 ### Django application
-Please note that the default ports for djang use is `TCP/8000`.
+Please note that the default ports for djang use is `TCP/8000`. \
 If you have already used TCP/8000, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
 
 ```shell
@@ -83,8 +88,24 @@ If you have already used TCP/8000, you could specify another one with the comman
 TODO: TBA
 
 
+## Using build artifacts
+
+```shell
+# Starts all containers with compose.yml
+% docker compose up -d
+```
+
+By leveraging docker compose, you can start containers, nginx/gunicorn/mysql, all at once. \
+So you can easily emulate production application behaviors in your local environment, with pulling build artifacts from [GHCR(GitHub Container Registry) as packages](https://github.com/hwakabh/bennu-official/pkgs/container/bennu-official).
+
+```shell
+# Clean up containers
+% docker compose down --volumes
+```
+
+
 ## Tests
-In this project, we adopt builtin testing frameworks of Django, based on Python standard libs `unittest`.
+In this project, we adopt builtin testing frameworks of Django, based on Python standard libs `unittest`. \
 For running unittest in your local environment, you can use:
 
 ```shell
