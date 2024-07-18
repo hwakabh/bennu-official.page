@@ -16,11 +16,11 @@ class TestsRoutesStatusCode(TestCase):
         pass
 
     def test_healthz_success(self):
-        resp = self.client.get('/home/')
+        resp = self.client.get('/healthz/')
         self.assertEqual(resp.status_code, 200)
 
     def test_home_success(self):
-        resp = self.client.get('/home/')
+        resp = self.client.get('/')
         self.assertEqual(resp.status_code, 200)
 
     def test_bio_success(self):
