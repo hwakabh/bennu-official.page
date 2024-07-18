@@ -47,7 +47,7 @@ services:
     tty: true
     healthcheck:
       test: "mysqladmin ping || exit 1"
-      interval: 3s
+      interval: 5s
       retries: 3
     volumes:
       - mysql-data:/opt/bitnami/mysql/data
