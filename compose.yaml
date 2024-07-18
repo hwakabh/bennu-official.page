@@ -1,5 +1,3 @@
-version: '3'
-
 x-environment: &mysql_environments
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
@@ -47,7 +45,7 @@ services:
     tty: true
     healthcheck:
       test: "mysqladmin ping || exit 1"
-      interval: 3s
+      interval: 5s
       retries: 3
     volumes:
       - mysql-data:/opt/bitnami/mysql/data
