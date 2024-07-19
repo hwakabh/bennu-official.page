@@ -118,4 +118,4 @@ so that there might be differences between unit test results and production envi
 
 
 ## License
-This application is licensed by BSD License since generally based on Django framework.
+This application is licensed by BSD License since generally based on the Django framework.
