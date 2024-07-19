@@ -3,7 +3,7 @@ Bennu Official Homepage, with Python Django MVC
 
 
 ## Prerequisites
-As this application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
+This application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
 So all the components required for `bennu_official` have already been built as container images by [Cloud Native Buildpacks](https://buildpacks.io).
 
 As there is a lot of container engines for your laptop environment such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
@@ -89,27 +89,36 @@ Please note that the default port Django uses is `8000/tcp`.
 % python manage.py runserver 8001
 ```
 
-In case, when you need to emulate WSGI server same as production on local environment, you should use gunicorn directly
+In case, when you need to emulate WSGI server same as production on local environment, you should use `gunicorn` command directly. \
+Please visit [Gunicorn repository](https://github.com/benoitc/gunicorn) for more information, including command line options.
 
 ```shell
 % gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
 ```
 
 ### NGINX reverse-proxy
-TODO: TBA
+In production environment, we need to deploy reverse-proxy such as NGINX in front of Gunicorn, \
+since WSGI servers are generally not expected to serve static files with production performances. \
 
+`bennu_official` would use [NGINX](https://nginx.org/en/) by default, and its configuration file is located in [`./manifests/configs/nginx.conf`](./manifests/configs/nginx.conf). \
+As there is a lot of parameters we can use as nginx.conf, for the non-production environment we only need to change `proxy_pass` parameter to allow NGINX to communicate with Gunicorn.
 
-## Using build artifacts
+```conf
+# production config (default)
+proxy_pass http://django.bennuhp.svc.cluster.local:8000/;
 
-```shell
-# Starts all containers with compose.yml
-% docker compose up -d
+# change for local env (specify gunicorn's address/port on your environment)
+proxy_pass http://localhost:8000/;
 ```
 
+## Using build artifacts
 By leveraging docker compose, you can start containers, nginx/gunicorn/mysql, all at once. \
 So you can easily emulate production application behaviors in your local environment, with pulling build artifacts from [GHCR(GitHub Container Registry) as packages](https://github.com/hwakabh/bennu-official/pkgs/container/bennu-official).
 
 ```shell
+# Starts all containers with compose.yml
+% docker compose up -d
+
 # Clean up containers
 % docker compose down --volumes
 ```
