@@ -10,7 +10,7 @@ Bennu Official Homepage, with Python Django MVC
 - `pip3` is used as package management: version `23.3.2`
 - `pyenv`: `2.3.27` on macOS, M1 Apple Silicon
 
-Please setup the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
+Please set up the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
 - Container engines
@@ -65,8 +65,8 @@ For starting Django application in the next step, you need to provide its creden
 ```
 
 ### Django application
-Please note that the default ports for djang use is `TCP/8000`. \
-If you have already used TCP/8000, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
+Please note that the default ports Django use is `8000/tcp`. \
+If you have already used 8000/tcp, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
 
 ```shell
 # Install dependencies
@@ -113,7 +113,7 @@ For running unittest in your local environment, you can use:
 % python manage.py test -v 2
 ```
 
-Please note that, some of the features like `handler404` or `handler500` are used in this application, and these are only applicable to production environment,
+Please note that, some of the features like `handler404` or `handler500` are used in this application, and these are only applicable to production environment
 so that there might be differences between unit test results and production environment.
 
 
