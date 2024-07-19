@@ -4,16 +4,16 @@ Bennu Official Homepage, with Python Django MVC
 
 ## Prerequisites
 As this application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
-So all the components required for `bennu_official` have already build as container image by [Cloud Native Buildpacks](https://buildpacks.io).
+So all the components required for `bennu_official` have already been built as container images by [Cloud Native Buildpacks](https://buildpacks.io).
 
 As there is a lot of container engines for your laptop environment such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
-`bennu_official` has been developed and expected generally macOS environment. \
+`bennu_official` has been developed and is generally expected to run in a macOS environment. \
 Please follow the official documents of them to install container engines onto your local laptop.
 
 
 Since `bennu_official` is based on Python web application platform, [Django](https://github.com/django/django), \
-we need to setup Python runtimes aligned to version defined in `.python-version` for local development. \
-For further information of Django framework, Please visit [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/).
+we need to set up Python runtimes aligned to the version defined in `.python-version` for local development. \
+For further information of Django framework, please visit [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/).
 
 
 Please set up the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
@@ -59,7 +59,7 @@ As described in previous section, when you have Docker Desktop or OrbStack in la
  ✔ Container mysql                      Started
 ```
 
-Alternaternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for `bennu_official`. \
+Alternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for `bennu_official`. \
 For starting Django application in the next step, you need to provide its credentials manually:
 
 ```shell
@@ -129,5 +129,5 @@ so that there might be differences between unit test results and production envi
 
 
 ## License
-This application is licensed by BSD License, since generally based on the Django framework.
+This application is licensed under the BSD License, since it is generally based on the Django framework.
 References: <https://github.com/django/django/blob/main/LICENSE>
