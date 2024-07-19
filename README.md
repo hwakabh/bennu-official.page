@@ -3,20 +3,20 @@ Bennu Official Homepage, with Python Django MVC
 
 
 ## Prerequisites
-This application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
+This application, `bennu_official`, has been implemented as basic a 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
 So all the components required for `bennu_official` have already been built as container images by [Cloud Native Buildpacks](https://buildpacks.io).
 
-As there is a lot of container engines for your laptop environment such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
+As there are a lot of container engines for your laptop environment, such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
 `bennu_official` has been developed and is generally expected to run in a macOS environment. \
 Please follow the official documents of them to install container engines onto your local laptop.
 
 
-Since `bennu_official` is based on Python web application platform, [Django](https://github.com/django/django), \
+Since `bennu_official` is based on the Python web application platform, [Django](https://github.com/django/django), \
 we need to set up Python runtimes aligned to the version defined in `.python-version` for local development. \
 For further information of Django framework, please visit [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/).
 
 
-Please set up the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
+Please set up the runtime with the version above, and basically code base here would be expected to run with `pyenv` for local development, \
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
 ```shell
@@ -47,7 +47,7 @@ you have to update the values from default, which are defined in `./manifests/*`
 Since Django would use SQLite3 as default backend database, but in this project we have intendedly disabled it for avoiding differences of deployment between production & development. \
 Indeed, bennu_official application expects MySQL as its default backend, and there are several options to prepare MySQL database on your laptop.
 
-As described in previous section, when you have Docker Desktop or OrbStack in laptop, the easiest way to setup MySQL is:
+As described in the previous section, when you have Docker Desktop or OrbStack on your laptop, the easiest way to set up MySQL is:
 
 ```shell
 # Start only MySQL container with docker-compose
@@ -89,7 +89,7 @@ Please note that the default port Django uses is `8000/tcp`.
 % python manage.py runserver 8001
 ```
 
-In case, when you need to emulate WSGI server same as production on local environment, you should use `gunicorn` command directly. \
+In case, when you need to emulate WSGI server same as production on the local environment, you should use `gunicorn` command directly. \
 Please visit [Gunicorn repository](https://github.com/benoitc/gunicorn) for more information, including command line options.
 
 ```shell
@@ -97,11 +97,11 @@ Please visit [Gunicorn repository](https://github.com/benoitc/gunicorn) for more
 ```
 
 ### NGINX reverse-proxy
-In production environment, we need to deploy reverse-proxy such as NGINX in front of Gunicorn, \
+In the production environment, we need to deploy a reverse-proxy such as NGINX in front of Gunicorn, \
 since WSGI servers are generally not expected to serve static files with production performances. \
 
 `bennu_official` would use [NGINX](https://nginx.org/en/) by default, and its configuration file is located in [`./manifests/configs/nginx.conf`](./manifests/configs/nginx.conf). \
-As there is a lot of parameters we can use as nginx.conf, for the non-production environment we only need to change `proxy_pass` parameter to allow NGINX to communicate with Gunicorn.
+As there are a lot of parameters we can use in nginx.conf, for the non-production environment we only need to change the `proxy_pass` parameter to allow NGINX to communicate with Gunicorn.
 
 ```conf
 # production config (default)
