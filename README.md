@@ -71,7 +71,7 @@ For starting Django application in the next step, you need to provide its creden
 ```
 
 ### Django application
-Please note that the default ports Django uses is `8000/tcp`.
+Please note that the default port Django uses is `8000/tcp`.
 
 ```shell
 # Install dependencies
