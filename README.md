@@ -3,7 +3,7 @@ Bennu Official Homepage, with Python Django MVC
 
 
 ## Prerequisites
-This application, `bennu_official`, has been implemented as basic a 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
+This application, `bennu_official`, has been implemented as a basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
 So all the components required for `bennu_official` have already been built as container images by [Cloud Native Buildpacks](https://buildpacks.io).
 
 As there are a lot of container engines for your laptop environment, such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
@@ -16,7 +16,7 @@ we need to set up Python runtimes aligned to the version defined in `.python-ver
 For further information of Django framework, please visit [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/).
 
 
-Please set up the runtime with the version above, and basically code base here would be expected to run with `pyenv` for local development, \
+Please set up the runtime with the version above, and the codebase here is generally expected to run with `pyenv` for local development, \
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
 ```shell
@@ -44,7 +44,7 @@ you have to update the values from default, which are defined in `./manifests/*`
 ## Running locally
 
 ### MySQL database
-Since Django would use SQLite3 as default backend database, but in this project we have intendedly disabled it for avoiding differences of deployment between production & development. \
+Since Django would use SQLite3 as default backend database, but in this project we have intentionally disabled it for avoiding differences of deployment between production & development. \
 Indeed, bennu_official application expects MySQL as its default backend, and there are several options to prepare MySQL database on your laptop.
 
 As described in the previous section, when you have Docker Desktop or OrbStack on your laptop, the easiest way to set up MySQL is:
@@ -113,7 +113,7 @@ proxy_pass http://localhost:8000/;
 
 ## Using build artifacts
 By leveraging docker compose, you can start containers, nginx/gunicorn/mysql, all at once. \
-So you can easily emulate production application behaviors in your local environment, with pulling build artifacts from [GHCR(GitHub Container Registry) as packages](https://github.com/hwakabh/bennu-official/pkgs/container/bennu-official).
+So you can easily emulate production application behaviors in your local environment, by pulling build artifacts from [GHCR(GitHub Container Registry) as packages](https://github.com/hwakabh/bennu-official/pkgs/container/bennu-official).
 
 ```shell
 # Starts all containers with compose.yml
