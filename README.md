@@ -3,34 +3,40 @@ Bennu Official Homepage, with Python Django MVC
 
 
 ## Prerequisites
-- Runtime and Component versions
-  - Python : 3.11.5
-  - Django : 5.0
-    - Please follow [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/) for further information
-- `pip3` is used as package management: version `23.3.2`
-- `pyenv`: `2.3.27` on macOS, M1 Apple Silicon
+As this application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes. \
+So all the components required for `bennu_official` have already build as container image by [Cloud Native Buildpacks](https://buildpacks.io).
+
+As there is a lot of container engines for your laptop environment such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
+`bennu_official` has been developed and expected generally macOS environment. \
+Please follow the official documents of them to install container engines onto your local laptop.
+
+
+Since `bennu_official` is based on Python web application platform, [Django](https://github.com/django/django), \
+we need to setup Python runtimes aligned to version defined in `.python-version` for local development. \
+For further information of Django framework, Please visit [the official documents](https://docs.djangoproject.com/en/5.0/releases/5.0/).
+
 
 Please set up the runtime with version above, and basically code base here would be expected to run with `pyenv` for local development, \
 so it is recommended to install `pyenv` first with following [the docs](https://github.com/pyenv/pyenv).
 
-- Container engines
-  - [Docker Desktop](https://docs.docker.com/desktop/)
-  - [OrbStack](https://orbstack.dev)
+```shell
+% pyenv --version
+pyenv 2.4.7
+
+% sysctl machdep.cpu.brand_string
+machdep.cpu.brand_string: Apple M1
+```
 
 
-## Deployments
-As this application have been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes. \
+## Deployments: Application Diagrams
 For deployment, we expect to run them on GKE, Google Kubernetes Engine, by Google Cloud, \
 but since we have kubernetes manifests in the repo, and there are few dependencies to GKE, you can also run app with any Kubernetes.
 
-### Deployment dependencies with GKE
 As the following kubernetes resources have leveraged with features of Google Cloud, in case you will apply manifests to your non-GKE cluster, \
 you have to update the values from default, which are defined in `./manifests/*` directory.
 - kind: StorageClass
 - kind: Ingress
 
-
-## Application Diagram
 
 ![app-digram](./app-diagram.drawio.svg)
 
@@ -65,8 +71,7 @@ For starting Django application in the next step, you need to provide its creden
 ```
 
 ### Django application
-Please note that the default ports Django uses is `8000/tcp`. \
-If you have already used 8000/tcp, you could specify another one with the command : `python manage.py runserver <YOUR_LOCAL_PORT>`
+Please note that the default ports Django uses is `8000/tcp`.
 
 ```shell
 # Install dependencies
@@ -80,7 +85,13 @@ If you have already used 8000/tcp, you could specify another one with the comman
 
 # Start application
 % python manage.py runserver
-# In case, when you need to emulate WSGI server same as production on local environment, you should use gunicorn
+# If you have already used 8000/tcp, you could specify another one with the command:
+% python manage.py runserver 8001
+```
+
+In case, when you need to emulate WSGI server same as production on local environment, you should use gunicorn directly
+
+```shell
 % gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
 ```
 
@@ -113,9 +124,10 @@ For running unittest in your local environment, you can use:
 % python manage.py test -v 2
 ```
 
-Please note that, some of the features like `handler404` or `handler500` are used in this application, and these are only applicable to production environment
+Please note that, some of the features like [`handler404`](https://docs.djangoproject.com/en/5.0/ref/urls/#handler404) or [`handler500`](https://docs.djangoproject.com/en/5.0/ref/urls/#handler500) are used in this application, and these are only applicable to production environment
 so that there might be differences between unit test results and production environment.
 
 
 ## License
 This application is licensed by BSD License, since generally based on the Django framework.
+References: <https://github.com/django/django/blob/main/LICENSE>
