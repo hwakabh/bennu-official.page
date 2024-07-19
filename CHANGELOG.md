@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.7.3](https://github.com/hwakabh/bennu-official/compare/v0.7.2...v0.7.3) (2024-07-19)
+
+
+### Dependencies
+
+* updated frequencies of checking. ([f78f9fd](https://github.com/hwakabh/bennu-official/commit/f78f9fd7da05e11e54e063c8d6e9729862f10a95))
+
+
+### Documentation
+
+* added details of nginx as rproxy. ([e9dae3f](https://github.com/hwakabh/bennu-official/commit/e9dae3f189227533bc1beef6f607bb97f95c0e3d))
+* added hyperlinks ([ed46994](https://github.com/hwakabh/bennu-official/commit/ed46994afd4e69607d64cbdbdf1c613ed44bdd7e))
+* added linebreaks, hyperlinks, and details for artifacts. ([45791a0](https://github.com/hwakabh/bennu-official/commit/45791a0b98d84b34f4898feaa7f0169666e413b8))
+* added MySQL setup and test procedures on local. ([bef049b](https://github.com/hwakabh/bennu-official/commit/bef049b91a289b270be627c97b8db761ecd23b7b))
+* enhanced prerequisites for application. ([9527594](https://github.com/hwakabh/bennu-official/commit/95275942ab8d27e78085bb20903a7f0640f30299))
+* fixed grammers reviews by coderabbit. ([416cbf1](https://github.com/hwakabh/bennu-official/commit/416cbf1987c6b5537426826c32be0c27842049e7))
+* fixed review by coderabbit. ([f482c6f](https://github.com/hwakabh/bennu-official/commit/f482c6f229675cd877141c4dae39c069c99a0c63))
+* fixed review by coderabbit. ([44daa6c](https://github.com/hwakabh/bennu-official/commit/44daa6c988e51dd7e9b3fa18a3599b4b37386310))
+* fixed reviews by coderabbit. ([c768344](https://github.com/hwakabh/bennu-official/commit/c7683446ad7d3b5747d9911700227a354372a990))
+* fixed typos reviewed by coderabbit. ([6da9d49](https://github.com/hwakabh/bennu-official/commit/6da9d499a02de06399f47a3649a9f47b374f1292))
+* fixed typos reviewed by coderabbit. ([d824572](https://github.com/hwakabh/bennu-official/commit/d8245721c3fdde0ebff57c20881562cb3a8f2464))
+* fixed typos reviewed by coderabbit. ([6823b4c](https://github.com/hwakabh/bennu-official/commit/6823b4cb8ac452dbbe1b6f7edf1b7407c0b517cf))
+* fixed typos reviewed by coderabbit. ([ee578b4](https://github.com/hwakabh/bennu-official/commit/ee578b47a8bdb36000fc7bad86a9d3178eb2d914))
+
 ## [0.7.2](https://github.com/hwakabh/bennu-official/compare/v0.7.1...v0.7.2) (2024-03-08)
 
 
