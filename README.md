@@ -3,7 +3,7 @@ Bennu Official Homepage, with Python Django MVC
 
 
 ## Prerequisites
-As this application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with Kubernetes. \
+As this application, `bennu_official`, has been implemented as basic 3-tiers (Web/App/DB) application with [Kubernetes](https://kubernetes.io). \
 So all the components required for `bennu_official` have already build as container image by [Cloud Native Buildpacks](https://buildpacks.io).
 
 As there is a lot of container engines for your laptop environment such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
@@ -29,7 +29,7 @@ machdep.cpu.brand_string: Apple M1
 
 
 ## Deployments: Application Diagrams
-For deployment, we expect to run them on GKE, Google Kubernetes Engine, by Google Cloud, \
+For deployment, we expect to run them on [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine?hl=en) by Google Cloud, \
 but since we have kubernetes manifests in the repo, and there are few dependencies to GKE, you can also run app with any Kubernetes.
 
 As the following kubernetes resources have leveraged with features of Google Cloud, in case you will apply manifests to your non-GKE cluster, \
