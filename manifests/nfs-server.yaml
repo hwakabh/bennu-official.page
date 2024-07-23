@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: nfs-server
-        image: gcr.io/google_containers/volume-nfs:latest
+        image: gcr.io/google-containers/volume-nfs:latest
         ports:
         - name: nfs
           containerPort: 2049
