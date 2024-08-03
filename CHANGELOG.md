@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/hwakabh/bennu-official/compare/v0.7.3...v0.8.0) (2024-08-03)
+
+
+### Features
+
+* **deploy:** added default values for local developments. ([f759df6](https://github.com/hwakabh/bennu-official/commit/f759df6cc910d2cc34a617b8d289c250e0ae70f4))
+* **deploy:** installed and enabled keel.sh. ([61ac68d](https://github.com/hwakabh/bennu-official/commit/61ac68dcb6d172a257a1b46f38ab748b2b9fe2be))
+
+
+### Bug Fixes
+
+* **deploy:** updated volume-nfs images. ([e0d264b](https://github.com/hwakabh/bennu-official/commit/e0d264b105093d56f2df6eb61f1dade4bd6e41ec))
+
 ## [0.7.3](https://github.com/hwakabh/bennu-official/compare/v0.7.2...v0.7.3) (2024-07-19)
 
 
