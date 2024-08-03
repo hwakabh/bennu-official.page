@@ -7,6 +7,11 @@ metadata:
     tier: app
   name: django
   namespace: bennuhp
+  annotations:
+    # Pull-based with polling GHCR every 1m
+    keel.sh/policy: "glob:*"
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@every 1m"
 spec:
   replicas: 3
   selector:
@@ -36,7 +41,6 @@ spec:
           - secretRef:
               name: app-secret
       containers:
-      # TODO: need to replace SHA instead of latest tag
       - image: ghcr.io/hwakabh/bennu-official:latest
         imagePullPolicy: Always
         name: django
