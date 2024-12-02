@@ -37,4 +37,4 @@ jobs:
       - name: Sanity Check with /healthz
         run: |
           docker compose up --build --detach && \
-          docker run --network bennu-official_default appropriate/curl -v -s --retry 3 --retry-connrefused -X GET http://gunicorn:8000/healthz ; echo
+          docker run --network bennu-officialpage_default appropriate/curl -v -s --retry 3 --retry-connrefused -X GET http://gunicorn:8000/healthz ; echo
