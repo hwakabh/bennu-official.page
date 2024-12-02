@@ -42,6 +42,34 @@ you have to update the values from default, which are defined in `./manifests/*`
 
 
 ## Running locally
+There are several options to start local development of this application on your local machine.
+- Run application on [KinD](https://kind.sigs.k8s.io)
+  - Since there are many options to install KinD, please choose the flavored way for your machine and follow [the official documents](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
+- Directly run application
+
+Since production application will be containerized by [Nixpacks](https://nixpacks.com/docs/getting-started) in Railway environment, so we generally recommend to deploy all components on KinD.
+(With this option, it is also better without any dependencies onto your machine and decoupled app from runtime with isolation of Kubernetes layer.)
+
+```shell
+# Create kind-cluster and validate context
+% kind create cluster --config ./manifest/configs/kind.yaml
+% kubectl config get-context
+
+# Deploy each controllers for deployment
+% kubectl apply -f ./manifests/controllers/
+
+# Deploy all resources (all resources will be deployed into namespace/bennu by Kustomization)
+% kubectl apply -k ./manifests
+```
+
+
+### Caveats
+As production application, which you can access via [URL](https://www.bennu-official.page), has been deployed on [Railway](https://railway.com) platform, \
+there is no reverse-proxy to serve staticfiles or to handle HTTP(S) access dedicately. \
+With the production application, the staticfiles have been served by [Whitenoise](https://whitenoise.readthedocs.io/en/stable/index.html), whereas this is not recommended architecture of Django.
+
+For local development, we can deploy NGINX reverse-proxy Pods and shared NFS volumes between NGINX and Gunicorn onto kind-cluster, but this is not actually same architecture as production one.
+
 
 ### MySQL database
 Since Django would use SQLite3 as default backend database, but in this project we have intentionally disabled it for avoiding differences of deployment between production & development. \
@@ -53,10 +81,10 @@ As described in the previous section, when you have Docker Desktop or OrbStack o
 # Start only MySQL container with docker-compose
 % docker compose up -d mysql
 [+] Running 4/4
- ✔ Network bennu-official_default       Created            0.0s
- ✔ Volume "bennu-official_mysql-data"   Created            0.0s
- ✔ Volume "bennu-official_staticfiles"  Created            0.0s
- ✔ Container mysql                      Started
+ ✔ Network bennu-officialpage_default       Created            0.0s
+ ✔ Volume "bennu-officialpage_mysql-data"   Created            0.0s
+ ✔ Volume "bennu-officialpage_staticfiles"  Created            0.0s
+ ✔ Container mysql                          Started
 ```
 
 Alternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for `bennu_official`. \
@@ -68,6 +96,7 @@ For starting Django application in the next step, you need to provide its creden
 % export MYSQL_HOSTNAME='****'          # default: mysql
 % export MYSQL_ROOT_PASSWORD='****'     # default: root
 #-> TBD: this key is actually not for MySQL root user as application requirement
+% export MYSQL_PORT='****'              # default: 3306
 ```
 
 ### Django application
