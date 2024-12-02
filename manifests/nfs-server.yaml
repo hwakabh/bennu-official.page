@@ -13,7 +13,7 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: standard-rwo  # GKE option
+  storageClassName: standard
   volumeMode: Filesystem
 ---
 apiVersion: apps/v1
