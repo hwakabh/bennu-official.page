@@ -41,7 +41,7 @@ spec:
         app: bennu
         tier: db
     spec:
-      storageClassName: standard-rwo
+      storageClassName: standard
       accessModes:
       - ReadWriteOnce
       volumeMode: Filesystem
