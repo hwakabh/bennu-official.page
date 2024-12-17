@@ -9,11 +9,29 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
+  MYSQL_ROOT_PASSWORD: 'root'
+  MYSQL_DATABASE: 'root'
+  MYSQL_HOSTNAME: 127.0.0.1
+  MYSQL_USER: root
 
 jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
+    # Need to use service-container since migrations will be called in Nixpack builds
+    services:
+      db:
+        image: bitnami/mysql:latest
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +53,11 @@ jobs:
 
       - name: Build with Nixpack
         uses: iloveitaly/github-action-nixpacks@main
+        env:
+          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
         with:
           push: false
           tags: |
