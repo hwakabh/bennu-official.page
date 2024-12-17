@@ -51,18 +51,28 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build with Nixpack
-        uses: iloveitaly/github-action-nixpacks@main
-        env:
-          MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
-          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
-          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-          MYSQL_USER: ${{ env.MYSQL_USER }}
-        with:
-          push: false
-          tags: |
-            ${{ env.IMAGE_NAME }}:latest
-          # https://github.com/iloveitaly/github-action-nixpacks
+      - name: Install nixpacks CLI and build image
+        run: |
+          curl -sSL https://nixpacks.com/install.sh | bash
+          nixpacks build . --name bennu-official:local \
+            --env MYSQL_HOSTNAME=${{ env.MYSQL_HOSTNAME }} \
+            --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
+            --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
+            --env MYSQL_USER=${{ env.MYSQL_USER }}
+
+      # Ref: https://github.com/iloveitaly/github-action-nixpacks/issues/6
+      # - name: Build with Nixpack
+      #   uses: iloveitaly/github-action-nixpacks@main
+      #   env:
+      #     MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
+      #     MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
+      #     MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+      #     MYSQL_USER: ${{ env.MYSQL_USER }}
+      #   with:
+      #     push: false
+      #     tags: |
+      #       ${{ env.IMAGE_NAME }}:local
+      #     # https://github.com/iloveitaly/github-action-nixpacks
 
       - name: Sanity Check with /healthz
         run: |
