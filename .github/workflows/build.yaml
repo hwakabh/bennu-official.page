@@ -9,9 +9,9 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
+  # MYSQL_HOSTNAME: 127.0.0.1
   MYSQL_ROOT_PASSWORD: root
   MYSQL_DATABASE: bennu
-  MYSQL_HOSTNAME: 127.0.0.1
   MYSQL_USER: root
 
 jobs:
@@ -59,7 +59,7 @@ jobs:
           curl -sSL https://nixpacks.com/install.sh | bash
           docker ps -a
           nixpacks build . --name bennu-official:local \
-            --env MYSQL_HOSTNAME=${{ env.MYSQL_HOSTNAME }} \
+            --env MYSQL_HOSTNAME=$(docker inspect $(docker ps -f ancestor=bitnami/mysql:latest -q) |jq '.[].NetworkSettings.IPAddress') \
             --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
             --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
             --env MYSQL_USER=${{ env.MYSQL_USER }}
