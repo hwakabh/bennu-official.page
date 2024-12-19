@@ -54,11 +54,8 @@ jobs:
       - name: Install nixpacks CLI and build image
         run: |
           curl -sSL https://nixpacks.com/install.sh | bash
-          docker inspect $(docker ps -f ancestor=bitnami/mysql:latest -q)
-          jq
-          docker inspect $(docker ps -f ancestor=bitnami/mysql:latest -q) |jq -r '.[].NetworkSettings.IPAddress'
           nixpacks build . --name bennu-official:local \
-            --env MYSQL_HOSTNAME=$(docker inspect $(docker ps -f ancestor=bitnami/mysql:latest -q) |jq -r '.[].NetworkSettings.IPAddress') \
+            --env MYSQL_HOSTNAME=$(docker inspect $(docker ps -f ancestor=bitnami/mysql:latest -q) |jq -r '.[].NetworkSettings.Networks[].IPAddress') \
             --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
             --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
             --env MYSQL_USER=${{ env.MYSQL_USER }}
