@@ -51,14 +51,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install nixpacks CLI and build image
+      - name: Install pack
+        uses: buildpacks/github-actions/setup-pack@v5.7.4
+      - name: Build packages
         run: |
-          curl -sSL https://nixpacks.com/install.sh | bash
-          nixpacks build . --name bennu-official:local \
-            --env MYSQL_HOSTNAME=db \
-            --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
-            --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
-            --env MYSQL_USER=${{ env.MYSQL_USER }}
+          pack build ghcr.io/hwakabh/bennu-official:latest \
+            --builder gcr.io/buildpacks/builder:latest \
+            --path . \
+            --env "$(cat .python-version)"
+
+      # - name: Install nixpacks CLI and build image
+      #   run: |
+      #     curl -sSL https://nixpacks.com/install.sh | bash
+      #     nixpacks build . --name bennu-official:local \
+      #       --env MYSQL_HOSTNAME=db \
+      #       --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
+      #       --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
+      #       --env MYSQL_USER=${{ env.MYSQL_USER }}
 
       # Ref: https://github.com/iloveitaly/github-action-nixpacks/issues/6
       # - name: Build with Nixpack
