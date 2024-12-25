@@ -18,20 +18,6 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-24.04
-    # Need to use service-container since migrations will be called in Nixpacks builds
-    services:
-      db:
-        image: bitnami/mysql:latest
-        ports:
-          - 3306:3306
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
-          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-        options: >-
-          --health-cmd "mysqladmin ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,15 +37,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install pack
-        uses: buildpacks/github-actions/setup-pack@v5.7.4
-      - name: Build packages
-        run: |
-          pack build ghcr.io/hwakabh/bennu-official:latest \
-            --builder gcr.io/buildpacks/builder:latest \
-            --path . \
-            --env "$(cat .python-version)"
-
       # - name: Install nixpacks CLI and build image
       #   run: |
       #     curl -sSL https://nixpacks.com/install.sh | bash
@@ -69,21 +46,11 @@ jobs:
       #       --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
       #       --env MYSQL_USER=${{ env.MYSQL_USER }}
 
-      # Ref: https://github.com/iloveitaly/github-action-nixpacks/issues/6
-      # - name: Build with Nixpack
-      #   uses: iloveitaly/github-action-nixpacks@main
-      #   env:
-      #     MYSQL_HOSTNAME: ${{ env.MYSQL_HOSTNAME }}
-      #     MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_ROOT_PASSWORD }}
-      #     MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-      #     MYSQL_USER: ${{ env.MYSQL_USER }}
-      #   with:
-      #     push: false
-      #     tags: |
-      #       ${{ env.IMAGE_NAME }}:local
-      #     # https://github.com/iloveitaly/github-action-nixpacks
-
-      - name: Sanity Check with /healthz
-        run: |
-          docker compose up --build --detach && \
-          docker run --network bennu-officialpage_default appropriate/curl -v -s --retry 3 --retry-connrefused -X GET http://gunicorn:8000/healthz ; echo
+      # Does not require MySQL container inside Actions, since we have PR Environment with Railway
+      - name: Build with Nixpack
+        uses: iloveitaly/github-action-nixpacks@main
+        with:
+          push: false
+          tags: |
+            ${{ env.IMAGE_NAME }}:local
+          # https://github.com/iloveitaly/github-action-nixpacks

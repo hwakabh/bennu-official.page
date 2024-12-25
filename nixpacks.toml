@@ -1,0 +1,10 @@
+# https://nixpacks.com/docs/configuration/file
+
+providers = ["python"]
+buildImage = 'ghcr.io/railwayapp/nixpacks:latest'
+
+[phases.setup]
+nixPkgs = ["gcc", "python312"]
+
+[variables]
+NIXPACKS_NO_CACHE='true'
