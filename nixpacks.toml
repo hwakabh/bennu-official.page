@@ -1,0 +1,13 @@
+# https://nixpacks.com/docs/configuration/file
+
+providers = ["python"]
+buildImage = 'ghcr.io/railwayapp/nixpacks:latest'
+
+[phases.setup]
+nixPkgs = ["gcc", "python312"]
+
+[start]
+cmd = "gunicorn --config ./manifests/configs/gunicorn.conf.py"
+
+[variables]
+NIXPACKS_NO_CACHE='true'

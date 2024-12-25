@@ -7,10 +7,17 @@ on:
       - '!main'
   workflow_dispatch:
 
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  # MYSQL_HOSTNAME: 127.0.0.1
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: bennu
+  MYSQL_USER: root
+
 jobs:
   build:
     name: Build image
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,18 +30,19 @@ jobs:
           trivy-config: .github/config/trivy.yaml
           # https://github.com/aquasecurity/trivy-action
 
-      - name: Install pack
-        uses: buildpacks/github-actions/setup-pack@v5.7.4
-        # https://github.com/buildpacks/github-actions#setup-pack-cli-action
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build image locally
-        run: |
-          pack build ghcr.io/hwakabh/bennu-official:latest \
-            --builder gcr.io/buildpacks/builder:latest \
-            --path . \
-            --env "$(cat .python-version)" \
-
-      - name: Sanity Check with /healthz
-        run: |
-          docker compose up --build --detach && \
-          docker run --network bennu-officialpage_default appropriate/curl -v -s --retry 3 --retry-connrefused -X GET http://gunicorn:8000/healthz ; echo
+      # Does not require MySQL container inside Actions, since we have PR Environment with Railway
+      # Also, we can not fetch MySQL Variables of PR Environment from GitHub Action, so we build Django app without migration here
+      - name: Build with Nixpack
+        uses: iloveitaly/github-action-nixpacks@main
+        with:
+          push: false
+          tags: |
+            ${{ env.IMAGE_NAME }}:local
+          # https://github.com/iloveitaly/github-action-nixpacks
