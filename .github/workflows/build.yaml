@@ -37,16 +37,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Install nixpacks CLI and build image
-      #   run: |
-      #     curl -sSL https://nixpacks.com/install.sh | bash
-      #     nixpacks build . --name bennu-official:local \
-      #       --env MYSQL_HOSTNAME=db \
-      #       --env MYSQL_DATABASE=${{ env.MYSQL_DATABASE }} \
-      #       --env MYSQL_ROOT_PASSWORD=${{ env.MYSQL_ROOT_PASSWORD }} \
-      #       --env MYSQL_USER=${{ env.MYSQL_USER }}
-
       # Does not require MySQL container inside Actions, since we have PR Environment with Railway
+      # Also, we can not fetch MySQL Variables of PR Environment from GitHub Action, so we build Django app without migration here
       - name: Build with Nixpack
         uses: iloveitaly/github-action-nixpacks@main
         with:
