@@ -4,13 +4,5 @@ namespace: bennuhp
 resources:
   - ./namespace.yaml
   - ./sealed-secrets.yaml
-  - ./nfs-server.yaml
-  - ./staticfiles.yaml
   - ./mysql.yaml
   - ./django.yaml
-  - ./nginx.yaml
-  - ./ingress.yaml
-configMapGenerator:
-  - name: nginx-etc
-    files:
-      - ./configs/nginx.conf

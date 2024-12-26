@@ -7,11 +7,6 @@ metadata:
     tier: app
   name: django
   namespace: bennuhp
-  annotations:
-    # Pull-based with polling GHCR every 1m
-    keel.sh/policy: "glob:*"
-    keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@every 1m"
 spec:
   replicas: 3
   selector:
@@ -25,39 +20,20 @@ spec:
         app: bennu
         tier: app
     spec:
-      initContainers:
-      - image: ghcr.io/hwakabh/bennu-official:latest
-        name: migrate
-        command:
-        - /cnb/process/migrate
-        envFrom:
-          - secretRef:
-              name: app-secret
-      - image: ghcr.io/hwakabh/bennu-official:latest
-        name: loaddata
-        command:
-        - /cnb/process/seeds
-        envFrom:
-          - secretRef:
-              name: app-secret
       containers:
       - image: ghcr.io/hwakabh/bennu-official:latest
         imagePullPolicy: Always
         name: django
+        command: ["/bin/bash", "-c"]
+        args: [
+          "/opt/venv/bin/python3 manage.py migrate ; \
+          /opt/venv/bin/python3 manage.py loaddata initial_data ; \
+          /opt/venv/bin/python3 manage.py collectstatic --noinput --clear ; \
+          /opt/venv/bin/gunicorn --config ./manifests/configs/gunicorn.conf.py"
+        ]
         envFrom:
           - secretRef:
               name: app-secret
-        volumeMounts:
-        - mountPath: /workspace/assets
-          name: static
-        # Need for collectstatic to RWX shared volumes
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
-        lifecycle:
-          postStart:
-            exec:
-              command: ['/cnb/process/collectstatic']
         readinessProbe:
           httpGet:
             path: /healthz
@@ -67,10 +43,6 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           timeoutSeconds: 10
-      volumes:
-      - name: static
-        persistentVolumeClaim:
-          claimName: staticfiles
 ---
 apiVersion: v1
 kind: Service
