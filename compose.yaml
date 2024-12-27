@@ -3,19 +3,6 @@ x-environment: &mysql_environments
   MYSQL_DATABASE: bennu
 
 services:
-  nginx:
-    image: bitnami/nginx:latest
-    # platform: linux/amd64
-    container_name: nginx
-    restart: always
-    ports:
-      - 8443:8443
-    volumes:
-      - ./manifests/configs:/opt/bitnami/nginx/conf/server_blocks
-      - staticfiles:/usr/share/nginx/html
-    depends_on:
-      - gunicorn
-
   gunicorn:
     image: ghcr.io/hwakabh/bennu-official:latest
     # platform: linux/amd64
@@ -27,8 +14,6 @@ services:
     restart: always
     ports:
       - 8000:8000
-    volumes:
-      - staticfiles:/workspace/assets
     depends_on:
       mysql:
         condition: service_healthy
@@ -51,5 +36,4 @@ services:
       - mysql-data:/opt/bitnami/mysql/data
 
 volumes:
-  staticfiles:
   mysql-data:
