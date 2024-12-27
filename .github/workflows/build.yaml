@@ -9,10 +9,6 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
-  # MYSQL_HOSTNAME: 127.0.0.1
-  MYSQL_ROOT_PASSWORD: root
-  MYSQL_DATABASE: bennu
-  MYSQL_USER: root
 
 jobs:
   build:

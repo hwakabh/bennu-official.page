@@ -22,14 +22,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
         # https://github.com/docker/login-action#github-container-registry
 
-      - name: Install pack
-        uses: buildpacks/github-actions/setup-pack@v5.8.4
-        # https://github.com/buildpacks/github-actions#setup-pack-cli-action
-
-      - name: Publish packages
-        run: |
-          pack build ghcr.io/hwakabh/bennu-official:latest \
-            --builder gcr.io/buildpacks/builder:latest \
-            --path . \
-            --env "$(cat .python-version)" \
-            --publish
+      - name: Publish packages by Nixpacks
+        uses: iloveitaly/github-action-nixpacks@main
+        with:
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:local
+          # https://github.com/iloveitaly/github-action-nixpacks
