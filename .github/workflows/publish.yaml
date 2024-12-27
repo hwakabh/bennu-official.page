@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+
 jobs:
   build_and_ship:
     name: Build & Ship OCI image
@@ -27,5 +30,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:local
+            ${{ env.IMAGE_NAME }}:latest
           # https://github.com/iloveitaly/github-action-nixpacks
