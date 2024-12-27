@@ -21,7 +21,7 @@ spec:
         tier: app
     spec:
       containers:
-      - image: ghcr.io/hwakabh/bennu-official:latest
+      - image: ghcr.io/hwakabh/bennu-official.page:latest
         imagePullPolicy: Always
         name: django
         command: ["/bin/bash", "-c"]
