@@ -14,7 +14,7 @@ jobs:
       - name: Delete old images
         uses: snok/container-retention-policy@v2
         with:
-          image-names: bennu-official
+          image-names: ${{ github.repository }}
           cut-off: 1 days ago JST
           # Keep 1 image within 1 days ago
           keep-at-least: 1
