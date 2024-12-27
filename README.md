@@ -92,8 +92,11 @@ Since pre-built container image has been available in [GitHub Packages](https://
 By leveraging docker compose, you can start containers, nginx/gunicorn/mysql, all at once.
 
 ```shell
-# Starts all containers with compose.yml
+# Starts all containers with compose.yaml
 % docker compose up -d
+
+% curl -k -X GET localhost:8000/healthz ; echo
+{"status": "ok"}
 
 # Clean up containers
 % docker compose down --volumes
@@ -133,7 +136,7 @@ nixpacks 1.30.0
 % nixpacks plan .
 
 # Start builds locally (nixpacks.toml will be loaded automatically)
-% nixpacks build .
+% nixpacks build --name bennu-offical:local .
 ```
 
 
