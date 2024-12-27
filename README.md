@@ -88,7 +88,7 @@ Please visit [Gunicorn repository](https://github.com/benoitc/gunicorn) for more
 
 
 ### on docker-compose
-Since pre-built container image has been available in [GitHub Packages](https://github.com/hwakabh/bennu-official.page/pkgs/container/bennu-official) of this repository, you can use it for local docker containers. \
+Since pre-built container image has been available in [GitHub Packages](https://github.com/hwakabh/bennu-official.page/pkgs/container/bennu-official.page) of this repository, you can use it for local docker containers. \
 By leveraging docker compose, you can start containers, nginx/gunicorn/mysql, all at once.
 
 ```shell
