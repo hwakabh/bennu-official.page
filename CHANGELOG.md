@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.9.0](https://github.com/hwakabh/bennu-official.page/compare/v0.8.0...v0.9.0) (2024-12-27)
+
+
+### Features
+
+* **ci:** replaced pack-cli with nixpack. ([2ee03aa](https://github.com/hwakabh/bennu-official.page/commit/2ee03aa55efe913bdf3cddae105cf28a01625700))
+
+
+### Bug Fixes
+
+* **ci|build:** updated image labels. ([7de3197](https://github.com/hwakabh/bennu-official.page/commit/7de319781ef58287334e155a90e89b0ede931ee5))
+* **ci:** added grants to MySQL service containers. ([5887f8f](https://github.com/hwakabh/bennu-official.page/commit/5887f8f1b5d91a20f2e380e5a1c2ac3cab3112b3))
+* **ci:** added MySQL service containers. ([a7d973a](https://github.com/hwakabh/bennu-official.page/commit/a7d973a08079abd94bcaa64ad7d927eda41008c5))
+* **ci:** cleared double-quotes and removed granting permissions. ([874efd8](https://github.com/hwakabh/bennu-official.page/commit/874efd8ad6e25ded69d92394a294b3c15bb0372c))
+* **ci:** manual install of CLI and build commands. ([84d4fcd](https://github.com/hwakabh/bennu-official.page/commit/84d4fcde9c2e417dd07814b9aefe5f8f7daf05f9))
+* **ci:** missing variables and image labels. ([5511dd0](https://github.com/hwakabh/bennu-official.page/commit/5511dd096ddb2dee2fd627037ef100797616ae74))
+* **ci:** removed pack-cli commands for image push. ([39e3754](https://github.com/hwakabh/bennu-official.page/commit/39e375426771308031e92d4fa14fd928d26e5fa5))
+* **ci:** updated docker network name. ([064dce5](https://github.com/hwakabh/bennu-official.page/commit/064dce55d78e3e88be037fe93025e410321475a2))
+* **ci:** updated MYSQL_HOSTNAME for connection with service-container. ([339d4e2](https://github.com/hwakabh/bennu-official.page/commit/339d4e2237c2997015db715fa3581b95947ee8ee))
+* **deploy:** enabled whitenoise for serving staticfiles without NGINX in Railway. ([7480637](https://github.com/hwakabh/bennu-official.page/commit/7480637dee47650e1ee210e513cb68abfb97eb77))
+* **deployment:** explicitly configured replicas and regions. ([468ae1e](https://github.com/hwakabh/bennu-official.page/commit/468ae1ee4077c8be9ee4ccd08c4dd35b0e8a7457))
+* **deps:** bumped Django version to fix conflicts with trivy scan. ([3edecfe](https://github.com/hwakabh/bennu-official.page/commit/3edecfe9a4962c96b10208ca9cee08fe68b25709))
+
+
+### Documentation
+
+* added validation steps. ([bba01b9](https://github.com/hwakabh/bennu-official.page/commit/bba01b9c85f499f19cb68c0ac791125c695f3d6d))
+* updated descriptions and diagrams. ([1986692](https://github.com/hwakabh/bennu-official.page/commit/1986692b0bf8c8de0857705fbb1239fb2078b4dd))
+
 ## [0.8.0](https://github.com/hwakabh/bennu-official/compare/v0.7.3...v0.8.0) (2024-08-03)
 
 
