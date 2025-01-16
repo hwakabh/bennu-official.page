@@ -120,7 +120,7 @@ Since production application will be containerized by [Nixpacks](https://nixpack
 
 With kind-cluster, the application layout should look like above diagram.
 
-![app-digram-kind](./app-diagram-k8s.drawio.svg)
+![app-digram-kind](./docs/app-diagram-k8s.drawio.svg)
 
 
 ## Builds
@@ -145,7 +145,7 @@ For deployment, we expect to run them on [Railway](https://railway.com) as appli
 The deployment configurations with Railway could be defined as its configuration file [`railway.toml`](./railway.toml), \
 you can refer [the official documents](https://docs.railway.com/reference/config-as-code#configurable-settings) for more details.
 
-![app-digram-railway](./app-diagram-railway.png)
+![app-digram-railway](./docs/app-diagram-railway.png)
 
 ### Caveats
 As production application, which you can access via [URL](https://www.bennu-official.page), has been deployed on [Railway](https://railway.com) platform, \
