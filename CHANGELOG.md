@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.1](https://github.com/hwakabh/bennu-official.page/compare/v0.9.0...v0.9.1) (2025-01-16)
+
+
+### Documentation
+
+* fixed broken links. ([1016001](https://github.com/hwakabh/bennu-official.page/commit/101600130f9771d99339d11578865cb60d78fc0e))
+* fixed links to GitHub packages. ([8c5cd64](https://github.com/hwakabh/bennu-official.page/commit/8c5cd6445e85e0bc79b1e4a93ecd512ba8da53e6))
+
 ## [0.9.0](https://github.com/hwakabh/bennu-official.page/compare/v0.8.0...v0.9.0) (2024-12-27)
 
 
