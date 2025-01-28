@@ -19,4 +19,4 @@ jobs:
           # Keep 1 image within 1 days ago
           keep-at-least: 1
           account-type: personal
-          token: ${{ secrets.PAT_PACKAGE_CLEANUP }}
+          token: ${{ secrets.PAT_CLEANUP }}
