@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.10.0](https://github.com/hwakabh/bennu-official.page/compare/v0.9.1...v0.10.0) (2025-01-28)
+
+
+### Features
+
+* **ci:** added envkeeper scheduled jobs. ([94b66e6](https://github.com/hwakabh/bennu-official.page/commit/94b66e60ddaf9bf97212e355800a3c1e70058bea))
+
+
+### Bug Fixes
+
+* **ci:** added proper versions of envkeeper. ([d054605](https://github.com/hwakabh/bennu-official.page/commit/d05460568995e633b2bf722dd5f7b315086a879b))
+* **ci:** added runs-on fields for envkeeper. ([268858f](https://github.com/hwakabh/bennu-official.page/commit/268858f88f4ad24b4a760afa9198b794f6b6f8ee))
+* **ci:** bumped from v0.3.0 to v0.3.1 for upstream changes. ([a2cea8f](https://github.com/hwakabh/bennu-official.page/commit/a2cea8facad1f9aa02066d0215aa17f0ffeaf6b5))
+* **ci:** bumped into envkeeper v.0.3.2 ([d08e172](https://github.com/hwakabh/bennu-official.page/commit/d08e1728e0470f1c992c9f1a3305cc0ac9f597e6))
+
 ## [0.9.1](https://github.com/hwakabh/bennu-official.page/compare/v0.9.0...v0.9.1) (2025-01-16)
 
 
