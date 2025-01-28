@@ -8,6 +8,7 @@ on:
 
 jobs:
   cleanup-env:
+    runs-on: ubuntu-24.04
     steps:
       - name: Clean up Environments
         uses: hwakabh/envkeeper@0.3.0
