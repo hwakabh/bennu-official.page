@@ -9,6 +9,7 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
+  JAWSDB_URL: "mysql://root:root@0.0.0.0:3306/bennu"
 
 jobs:
   build_and_ship:
@@ -30,6 +31,8 @@ jobs:
         # https://github.com/docker/login-action#github-container-registry
 
       - name: Build image as Heroku Buildpacks
+        env:
+          JAWSDB_URL: ${{ env.JAWSDB_URL }}
         run: |
           pack build ghcr.io/hwakabh/bennu-official:latest \
             --builder heroku/builder:24 \
