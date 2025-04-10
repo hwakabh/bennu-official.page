@@ -6,7 +6,7 @@ This application `bennu_official`, has been implemented on top of Python & Djang
 - Templates (refered as Views in other frameworks) with Jinja2 (as default one of Django)
 - Views (refered as Controllers in other frameworks) with Django's fundamental features
 
-
+<!-- *** -->
 ## Run locally
 As there are a lot of container engines for your laptop environment, such as [Docker Desktop](https://docs.docker.com/desktop/) or [OrbStack](https://orbstack.dev), \
 `bennu_official` has been developed and is generally expected to run in a macOS environment. \
@@ -50,18 +50,15 @@ As described in the previous section, when you have Docker Desktop or OrbStack o
 ```
 
 Alternatively, if you have already had MySQL database instances with any form factors remotely, you can use it for `bennu_official`. \
-For starting Django application in the next step, you need to provide its credentials manually:
+For starting Django application in the next step, you need to provide its credentials manually like following syntax:
 
 ```shell
-% export MYSQL_DATABASE='****'          # default: bennu
-% export MYSQL_USER='****'              # default: root
-% export MYSQL_HOSTNAME='****'          # default: mysql
-% export MYSQL_ROOT_PASSWORD='****'     # default: root
-#-> TBD: this key is actually not for MySQL root user as application requirement
-% export MYSQL_PORT='****'              # default: 3306
+# fallback url for local environment
+% export JAWSDB_URL='mysql://root:root@0.0.0.0:3306/bennu'
 ```
 
-For Django application, please note that the default port Django uses is `8000/tcp`.
+For Django application, please note that the default port Django uses is `8000/tcp`. \
+(You can also change listen port for application by setting `PORT` environmental variables)
 
 ```shell
 # Install dependencies
@@ -85,7 +82,6 @@ Please visit [Gunicorn repository](https://github.com/benoitc/gunicorn) for more
 ```shell
 % gunicorn --bind 0.0.0.0:8000 bennu_official.wsgi
 ```
-
 
 ### on docker-compose
 Since pre-built container image has been available in [GitHub Packages](https://github.com/hwakabh/bennu-official.page/pkgs/container/bennu-official.page) of this repository, you can use it for local docker containers. \
@@ -122,33 +118,9 @@ With kind-cluster, the application layout should look like above diagram.
 
 ![app-digram-kind](./docs/app-diagram-k8s.drawio.svg)
 
-
-## Builds
-With this project, we generally expect to build Python/Django application with [Nixpacks](https://nixpacks.com/docs) for building OCI container images. \
-The build configurations of Nixpacks could be codified as [`nixpacks.toml`](./nixpacks.toml), so please visit [the official references](https://nixpacks.com/docs/configuration/file) for further details. \
-If you would like to build container image on your local laptop, please install `nixpacks` command first, then just run:
-
-```shell
-% nixpacks --version
-nixpacks 1.30.0
-
-# Precheck for builds
-% nixpacks plan .
-
-# Start builds locally (nixpacks.toml will be loaded automatically)
-% nixpacks build --name bennu-offical:local .
-```
-
-
-## Deployments
-For deployment, we expect to run them on [Railway](https://railway.com) as application platform. \
-The deployment configurations with Railway could be defined as its configuration file [`railway.toml`](./railway.toml), \
-you can refer [the official documents](https://docs.railway.com/reference/config-as-code#configurable-settings) for more details.
-
-![app-digram-railway](./docs/app-diagram-railway.png)
-
-### Caveats
-As production application, which you can access via [URL](https://www.bennu-official.page), has been deployed on [Railway](https://railway.com) platform, \
+<!-- *** -->
+## Caveats
+As production application, which you can access via [URL](https://www.bennu-official.page), has been deployed on Heroku, \
 there is no reverse-proxy to serve staticfiles or to handle HTTP(S) access dedicately. \
 With the production application, the staticfiles have been served by [Whitenoise](https://whitenoise.readthedocs.io/en/stable/index.html), whereas this is not recommended architecture of Django.
 
@@ -167,7 +139,7 @@ proxy_pass http://django.bennuhp.svc.cluster.local:8000/;
 proxy_pass http://localhost:8000/;
 ```
 
-
+<!-- *** -->
 ## Tests
 In this project, we adopt builtin testing frameworks of Django, based on Python standard libs `unittest`. \
 For running unittest in your local environment, you can use:
@@ -180,7 +152,7 @@ For running unittest in your local environment, you can use:
 Please note that, some of the features like [`handler404`](https://docs.djangoproject.com/en/5.0/ref/urls/#handler404) or [`handler500`](https://docs.djangoproject.com/en/5.0/ref/urls/#handler500) are used in this application, and these are only applicable to production environment
 so that there might be differences between unit test results and production environment.
 
-
+<!-- *** -->
 ## License
 This application is licensed under the BSD License, since it is generally based on the Django framework.
 References: <https://github.com/django/django/blob/main/LICENSE>
