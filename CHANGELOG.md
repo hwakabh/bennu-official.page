@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/hwakabh/bennu-official.page/compare/v0.10.0...v0.10.1) (2025-04-10)
+
+
+### Documentation
+
+* finalized documents and removed unused diagrams. ([ef9056c](https://github.com/hwakabh/bennu-official.page/commit/ef9056c320818773a34073bfe07329f51a4eee51))
+
 ## [0.10.0](https://github.com/hwakabh/bennu-official.page/compare/v0.9.1...v0.10.0) (2025-01-28)
 
 
