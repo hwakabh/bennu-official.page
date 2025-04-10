@@ -1,0 +1,26 @@
+{
+  "name": "bennu-official",
+  "scripts": {
+    "postdeploy": "python manage.py migrate && python manage.py loaddata initial_data && python manage.py collectstatic --noinput --clear",
+    "pr-predestroy": "python manage.py migrate && python manage.py loaddata initial_data && python manage.py collectstatic --noinput --clear"
+  },
+  "env": {
+    "JAWSDB_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "jawsdb"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "stack": "heroku-24"
+}

@@ -25,10 +25,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
         # https://github.com/docker/login-action#github-container-registry
 
-      - name: Publish packages by Nixpacks
-        uses: iloveitaly/github-action-nixpacks@main
-        with:
-          push: true
-          tags: |
-            ${{ env.IMAGE_NAME }}:latest
-          # https://github.com/iloveitaly/github-action-nixpacks
+      # - name: Publish packages by Nixpacks
+      #   uses: iloveitaly/github-action-nixpacks@main
+      #   with:
+      #     push: true
+      #     tags: |
+      #       ${{ env.IMAGE_NAME }}:latest
+      #     # https://github.com/iloveitaly/github-action-nixpacks

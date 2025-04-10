@@ -8,8 +8,7 @@ services:
     # platform: linux/amd64
     environment:
       <<: *mysql_environments
-      MYSQL_USER: root
-      MYSQL_HOSTNAME: mysql
+      JAWSDB_URL: mysql://root:root@0.0.0.0:3306/bennu
     container_name: gunicorn
     restart: always
     ports:

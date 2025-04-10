@@ -1,4 +1,6 @@
 import os
+import re
+
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -60,11 +62,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'bennu'),
-        'USER': os.environ.get('MYSQL_USER', 'root'),
-        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD', 'root'),
-        'HOST': os.environ.get('MYSQL_HOSTNAME', 'localhost'),
-        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'NAME': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[7],
+        'USER': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[3],
+        'PASSWORD': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[4],
+        'HOST': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[5],
+        'PORT': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[6],
     }
 }
 
