@@ -1,14 +1,12 @@
 name: Publish
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  pull_request:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
   JAWSDB_URL: "mysql://root:root@0.0.0.0:3306/bennu"
 
 jobs:
@@ -34,9 +32,8 @@ jobs:
         env:
           JAWSDB_URL: ${{ env.JAWSDB_URL }}
         run: |
-          pack build ghcr.io/hwakabh/bennu-official:latest \
+          pack build ghcr.io/${{ github.repository }}:latest \
             --builder heroku/builder:24 \
             --path . \
             --env "JAWSDB_URL=$JAWSDB_URL" \
             --publish
-
