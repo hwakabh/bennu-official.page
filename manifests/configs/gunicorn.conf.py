@@ -8,7 +8,8 @@ wsgi_app = 'bennu_official.wsgi'
 raw_env = []
 
 # Server Socket
-bind = '0.0.0.0:8000'
+import os
+bind = '0.0.0.0:' + os.environ.get('PORT', '8000')
 
 # Worker Processes
 worker_class = 'gthread'
