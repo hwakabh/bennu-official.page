@@ -37,6 +37,6 @@ jobs:
           pack build ghcr.io/hwakabh/bennu-official:latest \
             --builder heroku/builder:24 \
             --path . \
-            --env "JAWSDB_URL=$JAWSDB_URL"
+            --env "JAWSDB_URL=$JAWSDB_URL" \
             --publish
 
