@@ -33,12 +33,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Does not require MySQL container inside Actions, since we have PR Environment with Railway
-      # Also, we can not fetch MySQL Variables of PR Environment from GitHub Action, so we build Django app without migration here
-      - name: Build with Nixpack
-        uses: iloveitaly/github-action-nixpacks@main
-        with:
-          push: false
-          tags: |
-            ${{ env.IMAGE_NAME }}:local
-          # https://github.com/iloveitaly/github-action-nixpacks
+      # # Does not require MySQL container inside Actions, since we have PR Environment with Railway
+      # # Also, we can not fetch MySQL Variables of PR Environment from GitHub Action, so we build Django app without migration here
+      # - name: Build with Nixpack
+      #   uses: iloveitaly/github-action-nixpacks@main
+      #   with:
+      #     push: false
+      #     tags: |
+      #       ${{ env.IMAGE_NAME }}:local
+      #     # https://github.com/iloveitaly/github-action-nixpacks
