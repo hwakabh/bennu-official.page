@@ -64,7 +64,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     DATABASES = {
         'default': {
-            'ENGINE': 'libsql.db.backends.sqlite3',
+            'ENGINE': 'django_libsql',
             'NAME': DATABASE_URL,
         }
     }
@@ -72,7 +72,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': f"{BASE_DIR}/db.sqlite3",
         }
     }
 # DATABASES = {
