@@ -54,7 +54,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bennu_official.wsgi.application'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.bennu-official.page', '.vercel.app']
 
 # Database
 import pymysql
