@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/hwakabh/bennu-official.page/compare/v0.10.1...v0.10.2) (2026-07-13)
+
+
+### Documentation
+
+* added archival notes ([0736123](https://github.com/hwakabh/bennu-official.page/commit/0736123399d639c489eec1ebc7c428917395d2ea))
+
 ## [0.10.1](https://github.com/hwakabh/bennu-official.page/compare/v0.10.0...v0.10.1) (2025-04-10)
 
 
