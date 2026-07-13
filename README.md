@@ -1,4 +1,9 @@
 # bennu_official
+THIS PROJECT HAS BEEN ARCHIVED WITH MIGRATED FROM GITHUB. \
+FOR FUTURE MAINTENANCE, SEE https://gitlab.com/hwakabh-dev/bennu-official-page
+
+---
+
 Bennu Official Homepage, with Python Django MTV
 
 This application `bennu_official`, has been implemented on top of Python & Django framework as generic MVC architectures.
