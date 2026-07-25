@@ -52,23 +52,39 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bennu_official.wsgi.application'
+# adding alias for Vercel deployment
+# https://vercel.com/templates/python/django-hello-world
+WSGI_APPLICATION = 'bennu_official.wsgi.app'
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.bennu-official.page', '.vercel.app']
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-ALLOWED_HOSTS = ['*']
 
 # Database
-import pymysql
-pymysql.install_as_MySQLdb()
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[7],
-        'USER': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[3],
-        'PASSWORD': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[4],
-        'HOST': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[5],
-        'PORT': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[6],
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_libsql',
+            'NAME': DATABASE_URL,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': f"{BASE_DIR}/db.sqlite3",
+        }
+    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[7],
+#         'USER': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[3],
+#         'PASSWORD': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[4],
+#         'HOST': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[5],
+#         'PORT': re.split('[:@/]', os.environ.get('JAWSDB_URL'))[6],
+#     }
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,9 +115,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 # - destination path of ./manage.py collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # - URL path of staticfiles, which is specified at templates in Pod by buildpacks
-STATIC_URL = '/assets/'
+STATIC_URL = '/static/'
 
 # Overwrite for local environment
 try:
